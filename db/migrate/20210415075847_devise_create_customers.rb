@@ -42,6 +42,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :user_password
       t.boolean :user_status
+      
+      
 
       t.timestamps null: false
     end
