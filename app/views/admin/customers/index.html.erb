@@ -12,14 +12,16 @@
           </tr>
         </thead>
         <tbody>
+          <% @customers.each do |customer| %>
           <tr>
             <td></td>
             <td></td>
-            <td></td>
+            <td><%= customer.email %></td>
             <td></td>
           </tr>
+          <% end %>
         </tbody>
-        <%#= paginate @ %><!--ページャ機能-->
+        <%#= paginate @customers %><!--なぜかエラー？-->
     </div>
   </div>
 </div>
