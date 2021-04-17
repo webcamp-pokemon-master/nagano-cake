@@ -7,6 +7,6 @@ class CartItemsController < ApplicationController
   end
   
   def machigai
-end
+  end
   
 end
