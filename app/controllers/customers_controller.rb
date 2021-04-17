@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   def show
+    kohei
   end
 
   def edit
@@ -13,4 +14,7 @@ class CustomersController < ApplicationController
 
   def index
   end
+  
+  
+  
 end
