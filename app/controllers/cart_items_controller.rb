@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   def index
+    aaa
   end
   
   def rensyu
