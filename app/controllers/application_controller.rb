@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/develop
     devise_parameter_sanitizer.permit(:sign_up, keys: [
       :first_name,
       :last_name,
@@ -19,8 +16,5 @@ class ApplicationController < ActionController::Base
       :address,
       :phone_number])
   end
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/develop
 end
