@@ -18,45 +18,29 @@
         </tr>
       </thead>
 
-<<<<<<< HEAD
-=======
+
 
 <% 
 =begin
 %>
->>>>>>> origin/develop
+
+
       <tbody>
         <% @products.each do |products| %>
           <tr>
             <td><%= products.id %></td>
-<<<<<<< HEAD
-            <td><%= link_to products.name, admin_item_path(item) %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td><%= item.sale_status %></td>
-=======
+
             <td><%= link_to products.name %></td>
             <td><%= products.price %></td>
             <td><%= products.genre.name %></td>
             <td><%= products.status %></td>
->>>>>>> origin/develop
+
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-<<<<<<< HEAD
 
-<div class="container">
-  <div class="row">
-   <div class="col-md-4 offset-md-4 py-2  mt-5">
-    <%= paginate @products %>
-   </div>
-  </div>
-</div>
-
-</div>
-=======
   <%
 =end
 %>
@@ -77,4 +61,3 @@
 %>
 
 </div>
->>>>>>> origin/develop

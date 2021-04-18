@@ -10,6 +10,7 @@ class Customer::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id]) 
+
   end
   
   
@@ -20,4 +21,5 @@ class Customer::ProductsController < ApplicationController
     params.require(:product).permit(:genre_id, :name, :introduction, :price, :status, :image_id)
   end
   
+
 end
