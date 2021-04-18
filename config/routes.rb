@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :customer do
+    get 'homes/top'
+    get 'homes/about'
+  end
   devise_for :admins
   devise_for :customers
   root to: 'homes#top'
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
     resources :delivery_addresses
     resources :customers
       get 'customers/quit'
+      get 'homes/about'
   end
 
   namespace :admin do
