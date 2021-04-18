@@ -3,7 +3,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
   end
 
   def show
@@ -11,18 +10,4 @@ class Admin::ProductsController < ApplicationController
 
   def edit
   end
-
-  def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to admin_homes_top_path
-  end
-
-  private
-  def product_params
-    params.require(:product).permit(:image, :name, :introduction, :genre, :price, :status)
-  end
-
-
-
 end
