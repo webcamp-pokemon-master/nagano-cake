@@ -1,5 +1,9 @@
 class Admin::ProductsController < ApplicationController
+  
   def index
+    @products = Product.all.page(params[:page]).per(10)
+    #アプリケーションを完成させよう2の4章参照
+    #@items = Item.page(params[:page]).per(10)
   end
 
   def new
@@ -7,6 +11,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id]) 
   end
 
   def edit
