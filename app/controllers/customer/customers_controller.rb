@@ -10,7 +10,8 @@ class Customer::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: "You have updated customer successfully."
+      flash[:notice] = "無事編集完了しました。"
+      redirect_to customer_path(@customer)
     else
       render 'edit'
     end
@@ -18,9 +19,14 @@ class Customer::CustomersController < ApplicationController
 
   def quit
   end
-  
-  def out 
-  end 
+
+  def out
+   @customer = current_customer
+   @customer.update(user_status: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
 
 
 

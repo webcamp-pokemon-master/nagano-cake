@@ -19,22 +19,28 @@
       </thead>
 
 
+
 <% 
 =begin
 %>
+
+
       <tbody>
         <% @products.each do |products| %>
           <tr>
             <td><%= products.id %></td>
+
             <td><%= link_to products.name %></td>
             <td><%= products.price %></td>
             <td><%= products.genre.name %></td>
             <td><%= products.status %></td>
+
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+
   <%
 =end
 %>
