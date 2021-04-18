@@ -19,7 +19,8 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td></td>
+              <td><%= f.select :genre(:genre_id, f, :id, :name)%>
+              </td>
             </tr>
             <tr>
               <td>税抜価格</td>
