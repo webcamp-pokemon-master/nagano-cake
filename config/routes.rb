@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get 'orders/thanks'
     resources :delivery_addresses
     resources :customers
-      get 'customers/quit'
+      
   end
 
   namespace :admin do
