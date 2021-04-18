@@ -8,19 +8,15 @@ class Customer::ProductsController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @product = Product.find(params[:id])
-=======
-    @product = Product.find(params[:id]) 
->>>>>>> origin/develop
   end
-  
-  
-  
-  
+
+
+
+
   private
   def product_params
     params.require(:product).permit(:genre_id, :name, :introduction, :price, :status, :image_id)
   end
-  
+
 end

@@ -4,23 +4,21 @@
       <h2 class="font-weight-bold">商品一覧(全<%= @products.count %>件)</h2>
       <div class="product-box">
 				<% @products.each do |product| %>
-				  <% if product.genre.is_valid == true %>
           <div class="product-container">
             <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
-            <div id="img_field" class="product">
+            <div class="product">
               <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
             </div>
             <p class="products-name">
               <%= product.name %>
             </p>
             <% end %>
-            <% if product.is_sale == true %>
-            <p>¥<%= product.tax_out_price.to_s(:delimited) %></p>
-            <% elsif product.is_sale == false %>
+            <% if product.status == true %>
+            <p>¥<%= product.price.to_s(:delimited) %></p>
+            <% elsif product.status == false %>
             <p class="soldout">売り切れ中</p>
             <% end %>
           </div>
-          <% end %>
 				<% end %>
 			</div>
 			<div class="text-center"><%= paginate(@products) %></div>
