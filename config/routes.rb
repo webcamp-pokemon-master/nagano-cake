@@ -1,83 +1,27 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/show'
+  devise_for :admins
+  devise_for :customers
+  root to: 'homes#top'
+
+  scope module: :customer do
+    resources :products
+    resources :cart_items
+    resources :orders
+      get 'orders/comfirm'
+      get 'orders/thanks'
+    resources :delivery_addresses
+    resources :customers
+    get '/customers/:id/quit' => 'customers#quit', as: 'quit_customer' #退会画面への遷移
+    patch '/customers/:id/quit' => 'customers#out', as: 'quit_out_customer' #会員ステータスの切替
   end
 
   namespace :admin do
-    get 'customers/index'
-  end
-
-  namespace :admin do
-    get 'customers/show'
-  end
-
-  namespace :admin do
-    get 'customers/edit'
-  end
-
-  namespace :admin do
-    get 'genres/index'
-  end
-
-  namespace :admin do
-    get 'genres/edit'
-  end
-
-  namespace :admin do
-    get 'products/index'
-  end
-
-  namespace :admin do
-    get 'products/new'
-  end
-
-  namespace :admin do
-    get 'products/show'
-  end
-
-  namespace :admin do
-    get 'products/edit'
-  end
-
-  namespace :admin do
+    resources :orders
+    resources :customers
+    resources :genres
+    resources :products
     get 'homes/top'
   end
 
-  get 'products/index'
-
-  get 'products/show'
-
-  get 'cart_items/index'
-
-  get 'orders/index'
-
-  get 'orders/new'
-
-  get 'orders/confirm'
-
-  get 'orders/thanks'
-
-  get 'orders/show'
-
-  get 'delivery_addresses/index'
-
-  get 'delivery_addresses/edit'
-
-  get 'customers/show'
-
-  get 'customers/edit'
-
-  get 'customers/quit'
-
-  get 'customers/out'
-
-  get 'customers/index'
-
-  get 'homes/top'
-
-  get 'homes/about'
-
-  devise_for :admins
-  devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

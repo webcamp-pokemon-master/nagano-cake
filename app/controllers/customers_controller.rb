@@ -3,7 +3,10 @@ class CustomersController < ApplicationController
   end
 
   def edit
+
   end
+
+
 
   def quit
   end
@@ -13,4 +16,7 @@ class CustomersController < ApplicationController
 
   def index
   end
+
+
+
 end
