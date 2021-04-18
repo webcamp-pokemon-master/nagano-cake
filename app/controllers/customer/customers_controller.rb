@@ -18,18 +18,14 @@ class Customer::CustomersController < ApplicationController
   end
 
   def quit
-    @customer = Customer.find(params[:id])
   end
 
   def out
-    @customer = Customer.find(params[:id])
-    if @customer.update(user_status: true)
-       sign_out current_customer
-    end
+   @customer = current_customer
+   @customer.update(user_status: true)
+    reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
-      
-    
   end
 
 
