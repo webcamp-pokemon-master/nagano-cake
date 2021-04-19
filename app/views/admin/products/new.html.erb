@@ -19,7 +19,8 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td></td>
+              <td>  <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id") %>
+              </td>
             </tr>
             <tr>
               <td>税抜価格</td>
@@ -27,7 +28,12 @@
             </tr>
             <tr>
               <td>販売ステータス</td>
-              <td></td>
+              <td>
+                <%= f.radio_button :status, true %>
+          	    <%= f.label :status, "販売中" %>
+                <%= f.radio_button :status, false %>
+                <%= f.label :status, "販売停止中" %>
+              </td>
             </tr>
             <tr>
               <td>
@@ -35,8 +41,8 @@
               </td>
             </tr>
             <% end %>
+            
         </tbody>
-
       </table>
     </div>
   </div>
