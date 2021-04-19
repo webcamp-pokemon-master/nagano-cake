@@ -4,7 +4,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   has_many :delivery_addresses, dependent: :destroy
+  has_many :orders, dependent: :destroy
+
   validates :last_name,  presence: true
   validates :first_name, presence: true
   validates :last_name_kana,  presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}

@@ -1,2 +1,65 @@
-<h1>Customer::Orders#new</h1>
-<p>Find me in app/views/customer/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx auto">
+      <h3 style="background:#EEEEEE;">注文情報入力</h3>
+      <table class="table table-borderless">
+        <tbody>
+          <%= form_with model: @order, url:orders_path, local:true do |f| %>
+          
+          
+          　<tr>
+             <td><h4>支払い方法</h4></td>
+             <td><%= f.radio_button :payment_method, :"クレジットカード" %></td>
+             <td><%= f.label :payment_method, "クレジットカード" %></td>
+            </tr>
+            <tr>
+              <td><%= f.radio_button :payment_method, :"銀行振込" %></td>
+              <td><%= f.label :payment_method, "銀行振込" %></td>
+            </tr>
+            <!--"integer?"にしなくていいの-->
+            
+            
+            <tr>
+              <td>
+                <h4>お届け先</h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>ご自身の住所</h4>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>登録先住所から選択</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>新しいお届け先</td>
+            </tr>
+            <tr>
+              <td>郵便番号(ハイフンなし)</td>
+              <td>
+                <%= f.text_field :postal_code, class: "form-control" %>
+              </td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>宛名</td>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
+              </td>
+            </tr>
+
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
