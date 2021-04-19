@@ -8,6 +8,7 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @genres = Genre.all
   end
 
   def show
@@ -25,7 +26,7 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:image, :name, :introduction, :genre, :price, :status)
+    params.require(:product).permit(:image, :name, :introduction, :genre_id, :price, :status)
   end
 
 
