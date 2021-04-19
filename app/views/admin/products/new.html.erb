@@ -4,8 +4,6 @@
     <div class="col-md-8 mx-auto">
       <table class="table table-borderless">
         <h1>商品新規登録</h1>
-        <% if @product.errors.any? %>
-        <% end %>
         <tbody>
            <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
             <tr>
