@@ -5,6 +5,7 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def create
+    @cart_item = current_customer.cart_items.new(params_cart_item)
   end
 
   def update
