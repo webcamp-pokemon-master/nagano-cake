@@ -19,9 +19,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to admin_products_path
+    @product = Product.new(product_params)
+    @genres = Genre.all
+    if @product.save
+      flash[:notice] = "You have updated book successfully."
+      redirect_to admin_products_path
+    else
+
+      render :new
+    end
   end
 
   private
