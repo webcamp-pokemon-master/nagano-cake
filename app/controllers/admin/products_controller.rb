@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  
+
   def index
     @products = Product.all.page(params[:page]).per(10)
     #アプリケーションを完成させよう2の4章参照
@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id]) 
+    @product = Product.find(params[:id])
   end
 
   def edit
@@ -21,7 +21,7 @@ class Admin::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to admin_homes_top_path
+    redirect_to admin_products_path
   end
 
   private
