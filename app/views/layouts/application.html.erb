@@ -20,7 +20,7 @@
                   <%= link_to "マイページ", "#", class: "nav-link text-light btn btn-outline-secondary" %>
                 </li>
                 <li>
-                  <%= link_to "商品一覧", "#", class: "nav-link text-light btn btn-outline-secondary" %>
+                  <%= link_to "商品一覧", products_path , class: "nav-link text-light btn btn-outline-secondary" %>
                 </li>
                 <li>
                   <%= link_to "カート", "#", class: "nav-link text-light btn btn-outline-secondary" %>
@@ -30,10 +30,10 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li>
-                  <%= link_to "商品⼀覧", "#", class: "nav-link text-light btn btn-outline-secondary" %>
+                  <%= link_to "商品⼀覧", products_path , class: "nav-link text-light btn btn-outline-secondary" %>
                 </li>
                 <li>
-                  <%= link_to "会員⼀覧", "#", class: "nav-link text-light btn btn-outline-secondary" %>
+                  <%= link_to "会員⼀覧", admin_customers_path, class: "nav-link text-light btn btn-outline-secondary" %>
                 </li>
                 <li>
                   <%= link_to "注⽂履歴⼀覧", "#", class: "nav-link text-light btn btn-outline-secondary" %>
