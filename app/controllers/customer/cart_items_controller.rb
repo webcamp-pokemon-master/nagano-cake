@@ -2,10 +2,14 @@ class Customer::CartItemsController < ApplicationController
 
 
   def index
+
   end
 
   def create
-    @cart_item = current_customer.cart_items.new(params_cart_item)
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
   def update
@@ -22,7 +26,7 @@ class Customer::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:customer_id, :products_id, :amount)
+    params.require(:cart_item).permit(:customer_id, :product_id, :amount)
   end
 
 end
