@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   # validates :image, presence: true
   validates :name, presence: true
   validates :introduction, presence: true
-  validates :price, presence: true
+  validates :price, presence: true,numericality: { only_integer: true }
   validates :genre_id, presence: true
 
 end
