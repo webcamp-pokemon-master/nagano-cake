@@ -14,7 +14,9 @@
             </p>
             <% end %>
             <% if product.status == true %>
-            <p>¥<%= product.price.to_s(:delimited) %></p>
+
+            <%= product.price.to_i %>
+
             <% elsif product.status == false %>
             <p class="soldout">売り切れ中</p>
             <% end %>
