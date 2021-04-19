@@ -2,16 +2,6 @@ class Customer::ProductsController < ApplicationController
 
 
   def index
-<<<<<<< HEAD
-
-  end
-
-  def show
-  end
-
-
-end
-=======
     @products = Product.all.page(params[:page]).per(10)
     #アプリケーションを完成させよう2の4章参照
 
@@ -34,4 +24,3 @@ end
 
 
 end
->>>>>>> origin/develop

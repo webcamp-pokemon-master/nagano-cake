@@ -10,17 +10,11 @@
     <table class="table table-hover text-center">
       <thead>
         <tr>
-          <%#<th>商品ID</th>%>
+          <th>商品ID</th>
           <th>商品名</th>
           <th>税抜き価格</th>
-<<<<<<< HEAD
-          <%#<th>ジャンル</th>%>
-          <%#<th>ステータス</th>%>
-=======
           <th>ジャンル</th>
-          
           <th>ステータス</th>
->>>>>>> origin/develop
         </tr>
       </thead>
 
@@ -28,11 +22,12 @@
       <tbody>
         <% @products.each do |products| %>
           <tr>
-            <%#<td><%= products.id %>
+            <td><%= products.id %>
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
-            <%#<td><%= products.genre.name %>
+            <td><%= products.genres.name %></td> <%# genres??? %>
             <%#<td><%= products.status %>
+            <td></td>
           </tr>
         <% end %>
       </tbody>
