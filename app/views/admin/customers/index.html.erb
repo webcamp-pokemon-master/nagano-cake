@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7 mx-auto">
+    <div class="col-md-8 mx-auto">
       <h2 style="background:#EEEEEE;">会員⼀覧</h2>
       <table class="table table-hover table-inverse">
         <thead>
@@ -14,10 +14,16 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td></td>
-            <td></td>
+            <td><%= customer.id %></td>
+            <td><%= customer.last_name %><%= customer.first_name %></td>
             <td><%= customer.email %></td>
-            <td></td>
+            <td>
+              <% if customer.user_status == true%>
+              <p class="text-success">有効</p>
+              <% else %>
+              <p>退会</p>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
