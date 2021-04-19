@@ -27,7 +27,12 @@
             <td><%= products.price %></td>
             <td><%= products.genres.name %></td> <%# genres??? %>
             <%#<td><%= products.status %>
-            <td></td>
+            <td><% if products.status == true %>
+                  販売中
+      				  <% else %>
+      					  販売停止中
+      				  <% end %>
+      			</td>
           </tr>
         <% end %>
       </tbody>
