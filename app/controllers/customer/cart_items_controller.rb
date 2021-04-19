@@ -1,8 +1,6 @@
 class Customer::CartItemsController < ApplicationController
-
-
   def index
-
+    @cart_items = CartItem.all
   end
 
   def create
@@ -16,8 +14,8 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
-    cart_item.destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
     redirect_to cart_items_path
   end
 
@@ -26,7 +24,7 @@ class Customer::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:customer_id, :product_id, :amount)
+    params.require(:cart_item).permit(:product_id, :amount)
   end
 
 end
