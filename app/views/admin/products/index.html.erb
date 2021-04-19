@@ -13,10 +13,6 @@
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜き価格</th>
-<<<<<<< HEAD
-=======
-         
->>>>>>> origin/develop
           <th>ジャンル</th>
           <th>ステータス</th>
         </tr>
@@ -29,7 +25,7 @@
             <td><%= products.id %>
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
-            <td><%= products.genres.name %></td> <%# genres??? %>
+            <td><%= products.genre.name %></td> <%# genres??? %>
             <%#<td><%= products.status %>
             <td><% if products.status == true %>
                   販売中
