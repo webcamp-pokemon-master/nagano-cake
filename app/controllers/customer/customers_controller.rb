@@ -22,9 +22,8 @@ before_action :ensure_correct_customer, {only: [:show, :edit]}
 
   def out
    @customer = current_customer
-   @customer.update(user_status: true)
-    reset_session
-    redirect_to root_path
+   @customer.update(user_status: false)
+   redirect_to root_path
   end
 
 
