@@ -19,7 +19,7 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= f.select :genre(:genre_id, f, :id, :name)%>
+              <td>  <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id") %>
               </td>
             </tr>
             <tr>
@@ -28,7 +28,12 @@
             </tr>
             <tr>
               <td>販売ステータス</td>
-              <td><%= f.check_box :status %></td>
+              <td>
+                <%= f.radio_button :status, true %>
+          	    <%= f.label :status, "販売中" %>
+                <%= f.radio_button :status, false %>
+                <%= f.label :status, "販売停止中" %>
+              </td>
             </tr>
             <tr>
               <td>
@@ -37,7 +42,6 @@
             </tr>
             <% end %>
         </tbody>
-
       </table>
     </div>
   </div>
