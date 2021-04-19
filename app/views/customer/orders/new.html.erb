@@ -1,24 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx auto">
+    <div class="col-lg-7 offset-lg-1 mt-5">
       <h3 style="background:#EEEEEE;">注文情報入力</h3>
       <table class="table table-borderless">
         <tbody>
           <%= form_with model: @order, url:orders_path, local:true do |f| %>
-          
-          
+
+
           　<tr>
              <td><h4>支払い方法</h4></td>
-             <td><%= f.radio_button :payment_method, :"クレジットカード" %></td>
-             <td><%= f.label :payment_method, "クレジットカード" %></td>
             </tr>
             <tr>
-              <td><%= f.radio_button :payment_method, :"銀行振込" %></td>
-              <td><%= f.label :payment_method, "銀行振込" %></td>
+              <td>
+                <%= f.radio_button :payment_method, :"クレジットカード" %>
+                <%= f.label :payment_method, "クレジットカード" %>
+              </td>
             </tr>
-            <!--"integer?"にしなくていいの-->
-            
-            
+
+            <tr>
+              <td>
+                <%= f.radio_button :payment_method, :"銀行振込" %>
+                <%= f.label :payment_method, "銀行振込" %>
+              </td>
+            </tr>
+            <!--modelでenumで定義-->
+            <!--enum payment_method: {"クレジットカード": 0, "銀行振込": 1 }-->
+
+
             <tr>
               <td>
                 <h4>お届け先</h4>
@@ -28,10 +36,23 @@
               <td>
                 <h4>ご自身の住所</h4>
               </td>
-              <td></td>
             </tr>
             <tr>
-              <td>登録先住所から選択</td>
+              <td>
+                <%= f.radio_button :addresses, "current_customer.address" %>
+                <%= f.label :addresses, "ご自身の住所" %><br>
+                <%= current_customer.postal_code %> <%=current_customer.address %><br>
+                <%= current_customer.last_name %><%= current_customer.first_name%>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <%= f.radio_button :addresses, "delivery_adresses.address"%>
+                <%= f.label :addresses, "登録先住所から選択" %>
+                <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
+                <br><%= f.collection_select(:delivery_address_id, @delivery_addresses, :id, :address) %>
+              </td>
               <td></td>
             </tr>
             <tr>
@@ -40,16 +61,16 @@
             <tr>
               <td>郵便番号(ハイフンなし)</td>
               <td>
-                <%= f.text_field :postal_code, class: "form-control" %>
+                <%= f.text_field :postal_code, class: "form-control", placeholder: "1008111 " %>
               </td>
             </tr>
             <tr>
               <td>住所</td>
-              <td><%= f.text_field :address, class: "form-control" %></td>
+              <td><%= f.text_field :address, class: "form-control", placeholder: "東京都千代田区千代田１−１" %></td>
             </tr>
             <tr>
               <td>宛名</td>
-              <td><%= f.text_field :name, class: "form-control" %></td>
+              <td><%= f.text_field :name, class: "form-control", placeholder: "宮内庁" %></td>
             </tr>
             <tr>
               <td>
@@ -63,3 +84,50 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<!--具体例-->
+<!--ruby.rb-->
+<!--f.collection_select(:name, @categories, :id, :name)-->
+<!--↓上記の結果-->
+
+<!--<select id="page_name" name="page[name]"><option value="1">Railsの基礎知識</option>-->
+<!--<option value="2">Rubyの基礎知識</option>-->
+<!--</select>-->
+<!--第一引数-->
+<!--メソッド名　:name-->
+<!--この情報をもとに、selectタグのid属性、name属性を決める。-->
+<!--↓の〇〇部分が決まる-->
+
+<!--<select name="○○" id="◯◯">-->
+<!--第二引数-->
+<!--オブジェクトの配列 @categories-->
+<!--その選択肢はどの配列がもとになるの？ということ-->
+<!--前提としては-->
+
+<!--@categories = Post.all-->
+
+<!--のように定義されているモデルから配列を取り出してある状態-->
+
+<!--第三引数-->
+<!--:id value属性の項目-->
+<!--ここにvalueが入る、つまり選択された場合ここの値がDBに送られる。今回は:idなのでidが送られる。-->
+<!--↓の◯◯に入る-->
+
+<!--<option value="◯◯">選択肢</option>-->
+
+<!--第四引数-->
+<!--:name-->
+<!--選択肢に実際に表示するのはこれということを指定している。項目は、optionタグ内のテキストに設定したい値のカラム名が入る。nameカラムを選択肢として表示したいので:nameと設定する。-->
+<!--↓の選択肢に:nameが入る-->
+
+<!--<option value="1">選択肢</option>-->
+
+<!--第五引数-->
+<!--これはオプションですが-->
+<!--prompt: "選択してください"-->
+<!--で初期設定でこれが表示されるようになります（オススメ）-->
+

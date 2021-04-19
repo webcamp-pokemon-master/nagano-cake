@@ -4,7 +4,8 @@ class Customer::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    # @customer = Customer.current_customer.id
+    @delivery_addresses = DeliveryAddress.where(customer: current_customer)
+
   end
 
   def comfirm

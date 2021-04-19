@@ -21,6 +21,7 @@
             <tr>
               <td>ジャンル</td>
               <td>  <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id") %>
+              <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
               </td>
             </tr>
             <tr>
