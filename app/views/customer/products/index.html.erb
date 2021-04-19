@@ -15,7 +15,7 @@
             <% end %>
             <% if product.status == true %>
 
-            <%= product.price.to_i %>
+            <%= (product.price * 1.1).floor %>
 
             <% elsif product.status == false %>
             <p class="soldout">売り切れ中</p>
