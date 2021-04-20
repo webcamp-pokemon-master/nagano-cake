@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: :customer do
     resources :products
     resources :cart_items
+    delete '/cart_items' => 'cart_items#destroy_all'
     resources :orders
       get 'orders/comfirm'
       get 'orders/thanks'
