@@ -8,7 +8,6 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-
   end
 
   def comfirm
@@ -41,6 +40,7 @@ class Customer::OrdersController < ApplicationController
 
 
     end
+
 
     # @order = Order.find(params[:order_id])
     # @address = @order.address.new(order_params)
