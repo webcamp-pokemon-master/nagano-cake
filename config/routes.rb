@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   scope module: :customer do
     resources :products
     resources :cart_items
-    resources :orders
-      get 'orders/comfirm'
-      get 'orders/thanks'
+    resources :orders do
+      collection do
+        get :confirm
+        get 'orders/thanks'
+      end
+    end
     resources :delivery_addresses
     resources :customers
       get 'customers/quit'
