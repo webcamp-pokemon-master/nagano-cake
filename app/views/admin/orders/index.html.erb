@@ -14,7 +14,37 @@
         </tr>
       </thead>
 
+    <tbody>
+    <% @customers.each do |customer| %>
+		    <tr>
+		      <td></td>
+		      <td class="text-left">
+		        <%= customer.last_name %>
+		      </td>
+		      <td></td>
+		      <td></td>
+
+<%
+=begin
+%>
+		      <td>
+		        <%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
+		        <%= order.created_at %>
+		        <% end %>
+		      </td>
+		      <td class="text-right">
+		        <%= order.order_details.count %>
+		      </td>
+    	    <td>
+    	      <%= order.order_status %>
+     	    </td>
+     	  </tr>
+<%
+=end
+%>
+
+		 <% end %>
+		 </tbody>
+
   </div>
-
-
 </div>

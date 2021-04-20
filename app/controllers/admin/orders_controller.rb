@@ -5,6 +5,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index  #注文履歴一覧
+    @customers = Customer.all
   end
 
 end
