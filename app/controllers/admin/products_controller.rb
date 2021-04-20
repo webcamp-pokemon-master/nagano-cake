@@ -16,6 +16,18 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @genres = Genre.all
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product), notice: "変更保存しました"
+    else
+      @genre_id = Genre.all
+      redirect_to edit_admin_product(@product)
+    end
   end
 
   def create
