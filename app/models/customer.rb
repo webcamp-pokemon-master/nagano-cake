@@ -22,5 +22,8 @@ class Customer < ApplicationRecord
 
   has_many :products
   has_one :cart_item, dependent: :destroy
+  def active_for_authentication?
+    super && (self.user_status == true)
+  end
 
 end
