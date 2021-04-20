@@ -23,8 +23,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_product_path(@product)
-      flash[:notice] = "変更保存しました"
+      redirect_to admin_product_path(@product), notice: "変更保存しました"
     else
       @genre_id = Genre.all
       redirect_to edit_admin_product(@product)
