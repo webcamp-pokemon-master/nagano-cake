@@ -2,6 +2,10 @@ class Customer::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     @sum = 0
+    @cart_items.each do |cart_item|
+      @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
+      @sum += @subtotal
+    end
   end
 
   def create
