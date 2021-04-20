@@ -1,5 +1,7 @@
 class Customer::OrdersController < ApplicationController
   def index
+    #@orders = current_customer.orders
+    @orders = Customer.all
   end
 
   def new
@@ -11,18 +13,21 @@ class Customer::OrdersController < ApplicationController
   end
 
   def comfirm
+    @cart_items = current_customer.cart_items
+    @cart_items
+    # @cart_items = CartItem.find(current_customer.id)
+    
+    
+    # ここにカート情報の定義お願いします！
+    
     @order = Order.new(customer: current_customer)
+    # 空のインスタンスを生成し、customerカラムにcurrento_customerを入れている
     @order.payment_method = params[:order][:payment_method]
     # 上記２つは下記記述でもokay
     # @order = Order.new(customer: current_customer, payment_method: params[:order][:payment_method])
 
-    # @order.address = current_customer.address
-    # @order.name    = current_customer.last_name + current_customer.first_name
-    # @order.postal_code = current_customer.postal_code
-
-    # 空のインスタンスを作成
-    # @order.address = current_customer.address
     if params[:order][:selected_address] == "1"
+      # "1"はviewでは整数で情報を送っているが、urlで情報を送る際に全て文字になるためここでは""をつける。
       @order.address     = current_customer.address
       @order.name        = current_customer.last_name + current_customer.first_name
       @order.postal_code = current_customer.postal_code
@@ -59,7 +64,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:name, :address, :postal_code, :payment_method ,:selected_address, :delivery_address_id)
+    params.require(:order).permit(:name, :address, :postal_code, :payment_method ,:selected_address, :delivery_address_id, :payment)
   end
 
 
