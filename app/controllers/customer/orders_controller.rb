@@ -12,14 +12,15 @@ class Customer::OrdersController < ApplicationController
   end
 
   def comfirm
-    @order = Order.find(params[:order_id])
-    @address = @order.address.new(order_params)
+    @order params
     
+
+    # @order = Order.find(params[:order_id])
+    # @address = @order.address.new(order_params)
+
       # @order.postal_code = current_customer.postal_code
       # @order.address     = current_customer.address
       # @order.name        = current_customer.last_name + current_customer.first_name
-
-    
   end
 
   def show
