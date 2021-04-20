@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   scope module: :customer do
+     delete 'cart_items/destroy_all'
     resources :products
-    resources :cart_items
+    resources :cart_items,only: [:index,:update,:create,:destroy]
+    resources :orders
+      get 'orders/comfirm'
+      get 'orders/thanks'
+
+    
     resources :orders do
       collection do
         post :comfirm
