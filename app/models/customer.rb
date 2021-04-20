@@ -18,12 +18,10 @@ class Customer < ApplicationRecord
    # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
   validates :address, presence: true
 
-
-
   has_many :products
-  has_one :cart_item, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+
   def active_for_authentication?
     super && (self.user_status == true)
   end
-
 end
