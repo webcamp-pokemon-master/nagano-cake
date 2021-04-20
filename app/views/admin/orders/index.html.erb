@@ -19,32 +19,34 @@
     <%#<% @orders.each do |order| %>
 		    <tr>
 		      <td class="text-center">
+    		    <%#購入日時%>
+    		    <%#<%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
+    		    <%#<%= order.created_at %>
 		        <%= link_to root_path do %>
 		        <%= customer.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
 		        <% end %>
 		      </td>
-        		      <%#<%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
-        		      <%#<%= order.created_at %>
+
 		      <td class="text-center">
+		        <%# 購入者%>
+		        <%#<%= order.customer.last_name %>
+                <%#<%= order.customer.first_name %>
 		        <%= customer.last_name %>
 		        <%= customer.first_name %>
 		      </td>
-		      <td class="text-left"></td>
-		      <td class="text-left"></td>
 
-<%
-=begin
-%>
-		      <td class="text-right">
-		        <%= order.order_details.count %>
+		      <td class="text-center">
+		        <%# 注文個数%>
+                <%#<%= order.order_details.sum(:amount) %>
+                <%#<%= order.order_details.sum(:quantity) %>
+                <%#<%= order.order_details.count %>
 		      </td>
-    	    <td>
-    	      <%= order.order_status %>
-     	    </td>
-     	  </tr>
-<%
-=end
-%>
+		      <td class="text-center">
+    		    <%# 注文ステータス%>
+    		    <%#<%= order.order_status %>
+                <%= customer.user_status %>
+		      </td>
+
 
 		 <% end %>
 		 </tbody>

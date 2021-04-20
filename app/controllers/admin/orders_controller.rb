@@ -1,12 +1,22 @@
 class Admin::OrdersController < ApplicationController
 
 
-  def show　#注文履歴詳細
-  end
 
   def index  #注文履歴一覧
     @customers = Customer.all
   end
 
+  def show　#注文履歴詳細
+  end
+
+
+  private
+  def order_params
+    params.require(:order).permit(:customer_id, :name, :address, :postal_code, :postage, :payment, :payment_method, :status)
+  end
+
+  def order_product_params
+    params.require(:order_product).permit(:product_id, :order_id, :amount, :making_status, :price)
+  end
 
 end
