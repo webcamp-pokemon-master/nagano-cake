@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :cart_items
     resources :orders do
       collection do
-        get :confirm
+        post :comfirm
         get 'orders/thanks'
       end
     end
