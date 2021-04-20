@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   scope module: :customer do
      delete 'cart_items/destroy_all'
     resources :products
+    resources :cart_items
+
+
     resources :cart_items,only: [:index,:update,:create,:destroy]
     resources :orders
       get 'orders/comfirm'
       get 'orders/thanks'
 
-    
     resources :orders do
       collection do
         post :comfirm
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
       end
     end
     delete '/cart_items' => 'cart_items#destroy_all'
+
 
     resources :delivery_addresses
     resources :customers
@@ -38,19 +41,3 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
-
-
-
-
-
-
-
-
-
-# 特殊文字	意味
-# &nbsp;	通常半角スペース
-# &ensp;	&nbsp;よりも少し広い（"n"と同じ幅のスペース）
-# &emsp;	&emsp;よりも少し広い（"m"と同じ幅のスペース） ※全角スペースと同等
-# &thinsp;	通常半角スペースよりも少し狭い
