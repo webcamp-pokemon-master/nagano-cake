@@ -1,6 +1,14 @@
 <div class="container my-5">
   <div class="row">
-    <h2>注文履歴一覧</h2>
+
+    <% if params[:customer_id] %>
+			<h2><%= @customer.last_name %>
+		    	<%= @customer.last_name %>さんの注文履歴一覧</h2>
+		<% elsif params[:created_at] == "today" %>
+			<h2>本日の注文履歴一覧</h2>
+		<% else %>
+			<h2>注文履歴一覧</h2>
+		<% end %>
   </div>
 
   <div class="row mt-1">
@@ -30,26 +38,25 @@
 		      <td class="text-center">
 		        <%# 購入者%>
 		        <%#<%= order.customer.last_name %>
-                <%#<%= order.customer.first_name %>
+            <%#<%= order.customer.first_name %>
 		        <%= customer.last_name %>
 		        <%= customer.first_name %>
 		      </td>
 
 		      <td class="text-center">
 		        <%# 注文個数%>
-                <%#<%= order.order_details.sum(:amount) %>
-                <%#<%= order.order_details.sum(:quantity) %>
-                <%#<%= order.order_details.count %>
+            <%#<%= order.order_products.sum(:amount) %>
+            <%#<%= order.order_products.sum(:quantity) %>
+            <%#<%= order.order_products.count %>
 		      </td>
+
 		      <td class="text-center">
     		    <%# 注文ステータス%>
     		    <%#<%= order.order_status %>
-                <%= customer.user_status %>
+            <%= customer.user_status %>
 		      </td>
-
 
 		 <% end %>
 		 </tbody>
-
   </div>
 </div>
