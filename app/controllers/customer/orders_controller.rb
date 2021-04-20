@@ -11,13 +11,12 @@ class Customer::OrdersController < ApplicationController
   end
 
   def comfirm
-    @cart_items = current_customer.cart_items
-    @cart_items
+    @cart_items = current_customer.cart_items.all
     # @cart_items = CartItem.find(current_customer.id)
-    
-    
-    # ここにカート情報の定義お願いします！
-    
+
+
+    # ここにカート情報の定義お願いします
+
     @order = Order.new(customer: current_customer)
     # 空のインスタンスを生成し、customerカラムにcurrento_customerを入れている
     @order.payment_method = params[:order][:payment_method]
