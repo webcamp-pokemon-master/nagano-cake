@@ -1,5 +1,7 @@
 class Customer::OrdersController < ApplicationController
   def index
+    #@orders = current_customer.orders
+    @orders = Customer.all
   end
 
   def new
