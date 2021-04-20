@@ -12,8 +12,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def comfirm
-    @order params
-    
+
+
 
     # @order = Order.find(params[:order_id])
     # @address = @order.address.new(order_params)
