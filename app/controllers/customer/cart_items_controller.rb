@@ -9,10 +9,14 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def create
+
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.save
-    redirect_to cart_items_path
+    if @cart_item.save
+      redirect_to cart_items_path
+    else
+      redirect_to product_path(params[:cart_item][:product_id])
+    end
   end
 
   def update
