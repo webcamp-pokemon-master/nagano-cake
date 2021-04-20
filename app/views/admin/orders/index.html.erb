@@ -1,6 +1,14 @@
 <div class="container my-5">
   <div class="row">
-    <h2>注文履歴一覧</h2>
+
+    <% if params[:customer_id] %>
+			<h2><%= @customer.last_name %>
+		    	<%= @customer.last_name %>さんの注文履歴一覧</h2>
+		<% elsif params[:created_at] == "today" %>
+			<h2>本日の注文履歴一覧</h2>
+		<% else %>
+			<h2>注文履歴一覧</h2>
+		<% end %>
   </div>
 
   <div class="row mt-1">
@@ -14,7 +22,41 @@
         </tr>
       </thead>
 
+    <tbody>
+    <% @customers.each do |customer| %>
+    <%#<% @orders.each do |order| %>
+		    <tr>
+		      <td class="text-center">
+    		    <%#購入日時%>
+    		    <%#<%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
+    		    <%#<%= order.created_at %>
+		        <%= link_to root_path do %>
+		        <%= customer.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+		        <% end %>
+		      </td>
+
+		      <td class="text-center">
+		        <%# 購入者%>
+		        <%#<%= order.customer.last_name %>
+            <%#<%= order.customer.first_name %>
+		        <%= customer.last_name %>
+		        <%= customer.first_name %>
+		      </td>
+
+		      <td class="text-center">
+		        <%# 注文個数%>
+            <%#<%= order.order_products.sum(:amount) %>
+            <%#<%= order.order_products.sum(:quantity) %>
+            <%#<%= order.order_products.count %>
+		      </td>
+
+		      <td class="text-center">
+    		    <%# 注文ステータス%>
+    		    <%#<%= order.order_status %>
+            <%= customer.user_status %>
+		      </td>
+
+		 <% end %>
+		 </tbody>
   </div>
-
-
 </div>
