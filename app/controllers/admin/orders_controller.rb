@@ -8,4 +8,5 @@ class Admin::OrdersController < ApplicationController
     @customers = Customer.all
   end
 
+
 end
