@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         get 'orders/thanks'
       end
     end
+    delete '/cart_items' => 'cart_items#destroy_all'
+
     resources :delivery_addresses
     resources :customers
       get 'customers/quit'
