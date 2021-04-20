@@ -13,10 +13,8 @@ class Customer::CartItemsController < ApplicationController
 
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-
-    
-@cart_items = current_user.cart_items.all
-  @cart_items.each do |cart_item|
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
     if cart_item.product_id == @cart_item.product_id
       new_amount = cart_item.amount + @cart_item.amount
       cart_item.update_attribute(:amount, new_amount)
@@ -24,11 +22,9 @@ class Customer::CartItemsController < ApplicationController
     end
   end
 
-    if @cart_item.save
+       @cart_item.save
       redirect_to cart_items_path
-    else
-      redirect_to product_path(params[:cart_item][:product_id])
-    en
+      
   end
 
   def update
