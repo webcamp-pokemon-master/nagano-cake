@@ -5,18 +5,16 @@
       <div class="product-box">
 				<% @products.each do |product| %>
           <div class="product-container">
-            <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
-            <div class="product">
+            <%= link_to product_path(product.id), class: "btn-link font-weight-bold", :style=>"color:black" do %>
+            <div class="product mt-4">
               <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
             </div>
-            <p class="products-name">
+            <p class="products-name mt-2">
               <%= product.name %>
             </p>
             <% end %>
             <% if product.status == true %>
-
-            <%= (product.price * 1.1).floor %>
-
+            <span class="font-weight-bold">¥<%= (product.price * 1.1).floor %></span>
             <% elsif product.status == false %>
             <p class="soldout">売り切れ中</p>
             <% end %>

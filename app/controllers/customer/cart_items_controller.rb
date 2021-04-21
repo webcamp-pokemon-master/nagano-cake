@@ -1,6 +1,6 @@
 class Customer::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @sum = 0
     @cart_items.each do |cart_item|
       @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
@@ -11,7 +11,6 @@ class Customer::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       if cart_item.product_id == @cart_item.product_id
