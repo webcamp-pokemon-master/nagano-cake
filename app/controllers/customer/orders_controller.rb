@@ -1,6 +1,8 @@
 class Customer::OrdersController < ApplicationController
   def index
-    #@orders = current_customer.orders
+    #1 @orders = current_customer.orders
+    # or
+    #2  @orders = Order.where(customer_id:current_customer)
     @orders = Customer.all
   end
 
@@ -51,6 +53,8 @@ class Customer::OrdersController < ApplicationController
 
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = @order.order_details
   end
 
   def thanks
