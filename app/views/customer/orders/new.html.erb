@@ -12,14 +12,14 @@
             <tr>
               <td>
                 <%#= f.radio_button :カラム名, key, オプション %>
-                <%= f.radio_button :payment_method, :"credit_card", checked: true %>
+                <%= f.radio_button :payment_method, "credit_card", checked: true %>
                 <%= f.label :payment_method, "クレジットカード" %>
               </td>
             </tr>
 
             <tr>
               <td>
-                <%= f.radio_button :payment_method, :"bank_transfer" %>
+                <%= f.radio_button :payment_method, "bank_transfer" %>
                 <%= f.label :payment_method, "銀行振込" %>
               </td>
             </tr>
@@ -45,7 +45,7 @@
                 <%= f.radio_button :selected_address, 2 %>
                 <%= f.label :selected_address, "登録先住所から選択" %>
                 <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
-                <br><%= f.collection_select(:delivery_address_id, @delivery_addresses, :id, :address) %>
+                <br><%= f.collection_select(:delivery_address_id, @delivery_addresses, :id, :address, prompt: "住所を選択してください") %>
                 <%#= f.select :名前, モデル名.カラム名の複数形.keys, オプション %>
               </td>
               <td></td>
