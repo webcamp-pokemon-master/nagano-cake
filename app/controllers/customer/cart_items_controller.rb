@@ -13,14 +13,15 @@ class Customer::CartItemsController < ApplicationController
     @cart_item.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
-      if cart_item.product_id == @cart_item.product_id
-        new_amount = cart_item.amount + @cart_item.amount
-        cart_item.update_attribute(:amount, new_amount)
-        @cart_item.delete
-      end
+    if cart_item.product_id == @cart_item.product_id
+      new_amount = cart_item.amount + @cart_item.amount
+      cart_item.update_attribute(:amount, new_amount)
+      @cart_item.delete
     end
-    @cart_item.save
-    redirect_to cart_items_path
+  end
+
+      @cart_item.save
+      redirect_to cart_items_path
 
   end
 

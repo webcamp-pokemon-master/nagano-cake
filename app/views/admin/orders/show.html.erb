@@ -1,2 +1,53 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-10">
+      <h4>注文履歴詳細</h4>
+          <table align="left" >
+            <tr>
+              <th>購入者</th>
+              <td><%= @order.name %></td>
+            </tr>
+            <tr>
+              <th>注文日</th>
+              <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            </tr>
+            <tr>
+              <th>配送先</th>
+              <td>
+                <%= @order.postal_code %><br>
+                <%= @order.address %><br>
+                <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+              <th>支払い方法</th>
+              <td><%= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <th>注文ステータス</th>
+              <td><%= @order.status %></td>
+            </tr>
+          </table>
+
+          <table class="table table-bordered" align="left">
+            <thead>
+              <tr class="table-primary">
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>個数</th>
+                  <th>小計</th>
+                  <th>制作ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_products.each do |order_product| %>
+              <tr>
+                <td><%= order_product.product.name %></td>
+                <td><%= order_product.price%></td>
+                <td><%= order_product.amount %></td>
+                <td><%= order_product.price* order_product.amount %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+
