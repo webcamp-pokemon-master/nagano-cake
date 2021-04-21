@@ -13,19 +13,13 @@ class Customer::OrdersController < ApplicationController
   end
 
   def comfirm
-    @cart_items = current_customer.cart_items
-    @cart_items
-    # @cart_items = CartItem.find(current_customer.id)
-    
-    
-    # ここにカート情報の定義お願いします！
-    
+    @cart_items = current_customer.cart_items.all
+
     @order = Order.new(customer: current_customer)
     # 空のインスタンスを生成し、customerカラムにcurrento_customerを入れている
     @order.payment_method = params[:order][:payment_method]
     # 上記２つは下記記述でもokay
     # @order = Order.new(customer: current_customer, payment_method: params[:order][:payment_method])
-
     if params[:order][:selected_address] == "1"
       # "1"はviewでは整数で情報を送っているが、urlで情報を送る際に全て文字になるためここでは""をつける。
       @order.address     = current_customer.address
@@ -42,17 +36,13 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
-
-
     end
 
-
-    # @order = Order.find(params[:order_id])
-    # @address = @order.address.new(order_params)
-
-    # @order.postal_code = current_customer.postal_code
-    # @order.address     = current_customer.address
-    # @order.name        =
+    @sum = 0
+    @cart_items.each do |cart_item|
+      @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
+      @sum += @subtotal
+    end
   end
 
   def show
