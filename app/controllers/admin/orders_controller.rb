@@ -2,15 +2,11 @@ class Admin::OrdersController < ApplicationController
 
 
   def index  #注文履歴一覧
-    @orders = Order.all
-      if params[:customer_id]
-    @customer = Customer.find(params[:customer_id])
-    @orders = @customer.orders.page(params[:page]).reverse_order
-      elsif params[:created_at] == "today"
-    @orders = Order.ordered_today.includes(:customer).page(params[:page]).reverse_order
-      else
-    @orders = Order.includes(:customer).page(params[:page]).reverse_order
-      end
+    if params[:customer_id]
+      @orders = Customer.find(params[:customer_id]).orders
+    else
+      @orders = Order.page(params[:page]).per(10)
+    end
   end
 
 
