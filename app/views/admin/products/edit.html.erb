@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
+       <%= form_with model: @product, url:admin_product_path, local:true do |f| %>
       <table class="table table-borderless">
         <h1>商品編集</h1>
         <tbody>
-           <%= form_with model: @product, url:admin_product_path, local:true do |f| %>
+          
             <tr>
              <td>商品画像</td>
              <td><%= f.attachment_field :image %></td>
@@ -40,10 +41,11 @@
               <%= f.submit "変更を保存", class: "btn btn-success" %>
               </td>
             </tr>
-            <% end %>
+            
 
         </tbody>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
