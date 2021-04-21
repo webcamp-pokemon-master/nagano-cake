@@ -11,10 +11,10 @@ class Customer::OrdersController < ApplicationController
     @delivery_addresses = DeliveryAddress.where(customer: current_customer)
   end
 
-  
+
   def comfirm
     @cart_items = current_customer.cart_items.all
-
+    @ordersnew = Order.new
     @order = Order.new(customer: current_customer)
     # 空のインスタンスを生成し、customerカラムにcurrento_customerを入れている
     @order.payment_method = params[:order][:payment_method]
@@ -44,11 +44,16 @@ class Customer::OrdersController < ApplicationController
       @sum += @subtotal
     end
   end
-  
+
   def create
-    @order = current_customer.orders.new(order_params)
-    binding.pry
+    @order = current_customer.orders.new(name: params[:order][:name],
+                                         address: params[:order][:address],
+                                         postal_code: params[:order][:postal_code],
+                                         payment_method: params[:order][:payment_method],
+                                         payment: params[:order][:payment]
+                                         )
     @order.save
+    redirect_to root_path
   end
 
 
@@ -63,7 +68,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:name, :address, :postal_code, :payment_method ,:selected_address, :delivery_address_id, :payment)
+    params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment, :selected_address, :delivery_address_id)
   end
 
 
