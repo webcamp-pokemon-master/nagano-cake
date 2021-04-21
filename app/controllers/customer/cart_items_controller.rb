@@ -1,9 +1,8 @@
 class Customer::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @sum = 0
     @cart_items.each do |cart_item|
-
       @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
       @sum += @subtotal
     end
@@ -19,6 +18,8 @@ class Customer::CartItemsController < ApplicationController
       cart_item.update_attribute(:amount, new_amount)
       @cart_item.delete
     end
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
       @cart_item.save
