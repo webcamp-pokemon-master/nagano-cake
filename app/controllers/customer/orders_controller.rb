@@ -51,6 +51,8 @@ class Customer::OrdersController < ApplicationController
                                          payment: params[:order][:payment]
                                          )
     @order.save
+    redirect_to thanks_orders_path
+
 
     @cart_items = current_customer.cart_items.all
     # カートアイテムをorder_productsテーブルに保存
@@ -63,9 +65,8 @@ class Customer::OrdersController < ApplicationController
         )
     end
     @cart_items.destroy_all
-    redirect_to root_path
+    
   end
-
 
   def show
   end
