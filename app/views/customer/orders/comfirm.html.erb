@@ -1,39 +1,70 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-8">
-      <h1>注文情報確認</h1>
-      <table class="table">
-        <thead>
-          <tr>
-              <th>商品名</th>
-              <th>単価(税込)</th>
-              <th>数量</th>
-              <th>小計</th>
-          </tr>
-        </thead>
+    <div class="col-md-10">
+      <h4>注文情報確認</h4>
+        <table>
+        <tr>
+        <td>
+          <table class="table table-bordered">
+            <thead>
+              <tr class="table-primary">
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @cart_items.each do |cart| %>
+              <tr>
+                <td>
+                  <%= attachment_image_tag cart.product, :image, :fill, 40,40 %>
+                  <%= cart.product.name %></td>
+                <td><%= (cart.product.price * 1.1).floor %></td>
+                <td><%= cart.amount %></td>
+                <td><%= (cart.product.price * 1.1).floor * cart.amount %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+        <td valign="top">
+          <table class="table table-bordered" align="left" id="tabel-right">
+            <tr>
+              <th class="table-primary">送料</th>
+              <td><%= @order.postage %></td>
+            </tr>
+            <tr>
+              <th class="table-primary">商品合計</th>
+              <td><%= @sum %></td>
+            </tr>
+            <tr>
+              <th class="table-primary">請求金額</th>
+              <td><%= @sum + @order.postage %></td>
+            </tr>
+          </table>
+        </td>
+        </tr>
+        </table>
+
+
+      <div class="col-md-5">
+      <table class="table table-borderless">
         <tbody>
-          <%# @cart_items.each do |cart_item| %>
           <tr>
-            <td>product.name</td>
-            <td>price</td>
-            <td>amount</td>
-            <td>小計</td>
-          </tr>
-          <% #end %>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>支払い方法</td>
+            <td><strong>支払い方法</strong></td>
             <td><%= @order.payment_method %></td>
           </tr>
           <tr>
-            <td>お届け先</td>
-            <td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
+            <td><strong>お届け先</strong></td>
+              <td>〒<%= @order.postal_code %><%= @order.address %>
+              <br/>
+              <%= @order.name %></td>
           </tr>
         </tbody>
       </table>
+      <%= link_to "注文を確定する", "#", class: "btn btn-success mx-auto " %>
+      </div>
     </div>
   </div>
 </div>
