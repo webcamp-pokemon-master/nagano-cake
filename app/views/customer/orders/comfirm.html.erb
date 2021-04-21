@@ -64,7 +64,7 @@
         </tbody>
       </table>
       <div>
-        <%= form_with @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= form_with @order, url: "#", method: :post, local: true do |f| %>
           <%= f.hidden_field :address %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :postal_code %>
