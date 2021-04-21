@@ -51,9 +51,8 @@ class Customer::OrdersController < ApplicationController
                                          payment: params[:order][:payment]
                                          )
     @order.save
-    redirect_to root_path
+    redirect_to thanks_orders_path
   end
-
 
   def show
   end
