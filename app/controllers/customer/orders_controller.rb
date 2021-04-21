@@ -52,6 +52,19 @@ class Customer::OrdersController < ApplicationController
                                          )
     @order.save
     redirect_to
+
+    @cart_items = current_customer.cart_items.all
+    # カートアイテムをorder_productsテーブルに保存
+    @cart_items.each do |cart_item|
+      OrderProduct.create(
+        product_id: cart_item.product,
+        order_id: @order.id,
+        amount: cart_item.amount,
+        price: cart_item.product.price
+        )
+    end
+    @cart_items.destroy_all
+    redirect_to root_path
   end
 
 
