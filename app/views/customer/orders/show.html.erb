@@ -9,7 +9,7 @@
           <table class="table table-bordered" align="left" >
             <tr>
               <th class="table-primary">注文日</th>
-              <td>%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
             </tr>
             <tr>
               <th class="table-primary">配送先</th>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
               <th class="table-primary">支払い方法</th>
-              <td>%= @order.payment %</td>
+              <td><%= @order.payment_method %></td>
             </tr>
             <tr>
               <th class="table-primary">ステータス</th>
@@ -59,12 +59,12 @@
               </tr>
             </thead>
             <tbody>
-              <% @cart_items.each do |cart| %>
+              <% @order_products.each do |order_product| %>
               <tr>
-                <td><%= cart.product.name %></td>
-                <td><%= (cart.product.price * 1.1).floor %></td>
-                <td><%= cart.amount %></td>
-                <td><%= (cart.product.price * 1.1).floor * cart.amount %></td>
+                <td><%= order_product.product.name %></td>
+                <td><%= order_product.price%></td>
+                <td><%= order_product.amount %></td>
+                <td><%= order_product.price* order_product.amount %></td>
               </tr>
               <% end %>
             </tbody>

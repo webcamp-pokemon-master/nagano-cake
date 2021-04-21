@@ -18,8 +18,6 @@ class Customer::CartItemsController < ApplicationController
       cart_item.update_attribute(:amount, new_amount)
       @cart_item.delete
     end
-    @cart_item.save
-    redirect_to cart_items_path
   end
 
       @cart_item.save
