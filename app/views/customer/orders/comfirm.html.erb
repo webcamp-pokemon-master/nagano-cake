@@ -46,8 +46,6 @@
         </td>
         </tr>
         </table>
-
-
       <div class="col-md-5">
       <table class="table table-borderless">
         <tbody>
@@ -57,13 +55,22 @@
           </tr>
           <tr>
             <td><strong>お届け先</strong></td>
-              <td>〒<%= @order.postal_code %><%= @order.address %>
+              <td>〒<%= @order.postal_code %>  <%= @order.address %>
               <br/>
               <%= @order.name %></td>
           </tr>
         </tbody>
       </table>
-      <%= link_to "注文を確定する", "#", class: "btn btn-success mx-auto " %>
+      <div>
+        <%= form_with @order, url: "#", method: :post, local: true do |f| %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :postal_code %>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :payment, :@sum %>
+          <%= link_to "注文を確定する", class: "btn btn-success mx-auto " %>
+        <% end %>
+      </div>
       </div>
     </div>
   </div>
