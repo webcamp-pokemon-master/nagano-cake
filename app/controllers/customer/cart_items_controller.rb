@@ -18,17 +18,12 @@ class Customer::CartItemsController < ApplicationController
       new_amount = cart_item.amount + @cart_item.amount
       cart_item.update_attribute(:amount, new_amount)
       @cart_item.delete
-      redirect_to cart_items_path
-    end  
-      if @cart_item.save
-        redirect_to cart_items_path
-      else
-      @cart_item.save
-       redirect_to cart_items_path
-      redirect_to product_path(params[:cart_item][:product_id])
-      end
     end
-  
+  end
+
+      @cart_item.save
+      redirect_to cart_items_path
+
   end
 
   def update
