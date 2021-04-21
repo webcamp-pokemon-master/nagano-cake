@@ -1,7 +1,7 @@
 class Customer::ProductsController < ApplicationController
 
   def index
-    @products = Product.all.page(params[:page]).per(10)
+    @products = Product.all.page(params[:page]).per(8)
     #アプリケーションを完成させよう2の4章参照
     #@items = Item.page(params[:page]).per(10)
   end
