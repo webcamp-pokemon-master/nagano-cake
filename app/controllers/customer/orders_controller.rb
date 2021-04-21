@@ -9,9 +9,7 @@ class Customer::OrdersController < ApplicationController
     @delivery_addresses = DeliveryAddress.where(customer: current_customer)
   end
 
-  def create
-  end
-
+  
   def comfirm
     @cart_items = current_customer.cart_items.all
 
@@ -44,6 +42,13 @@ class Customer::OrdersController < ApplicationController
       @sum += @subtotal
     end
   end
+  
+  def create
+    @order = current_customer.orders.new(order_params)
+    binding.pry
+    @order.save
+  end
+
 
   def show
   end
