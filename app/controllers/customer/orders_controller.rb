@@ -1,9 +1,9 @@
 class Customer::OrdersController < ApplicationController
   def index
-    #1 @orders = current_customer.orders
+    @orders = current_customer.orders
     # or
     #2  @orders = Order.where(customer_id:current_customer)
-    @orders = Customer.all
+
   end
 
   def new
