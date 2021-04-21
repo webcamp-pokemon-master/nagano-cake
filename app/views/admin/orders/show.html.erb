@@ -28,7 +28,7 @@
               <td><%= @order.status %></td>
             </tr>
           </table>
-          
+
           <table class="table table-bordered" align="left">
             <thead>
               <tr class="table-primary">
@@ -40,16 +40,14 @@
               </tr>
             </thead>
             <tbody>
-              <% @cart_items.each do |cart| %>
+              <% @order_products.each do |order_product| %>
               <tr>
-                <td><%= cart.product.name %></td>
-                <td><%= (cart.product.price * 1.1).floor %></td>
-                <td><%= cart.amount %></td>
-                <td><%= (cart.product.price * 1.1).floor * cart.amount %></td>
-                
+                <td><%= order_product.product.name %></td>
+                <td><%= order_product.price%></td>
+                <td><%= order_product.amount %></td>
+                <td><%= order_product.price* order_product.amount %></td>
               </tr>
               <% end %>
             </tbody>
           </table>
-          
-          
+
