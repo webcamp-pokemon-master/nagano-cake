@@ -12,14 +12,14 @@
             <tr>
               <td>
                 <%#= f.radio_button :カラム名, key, オプション %>
-                <%= f.radio_button :payment_method, :"クレジットカード", checkd: true %>
+                <%= f.radio_button :payment_method, :"credit_card", checked: true %>
                 <%= f.label :payment_method, "クレジットカード" %>
               </td>
             </tr>
 
             <tr>
               <td>
-                <%= f.radio_button :payment_method, :"銀行振込" %>
+                <%= f.radio_button :payment_method, :"bank_transfer" %>
                 <%= f.label :payment_method, "銀行振込" %>
               </td>
             </tr>
