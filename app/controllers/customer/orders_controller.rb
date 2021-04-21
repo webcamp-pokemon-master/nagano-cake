@@ -51,13 +51,12 @@ class Customer::OrdersController < ApplicationController
                                          payment: params[:order][:payment]
                                          )
     @order.save
-    redirect_to
 
     @cart_items = current_customer.cart_items.all
     # カートアイテムをorder_productsテーブルに保存
     @cart_items.each do |cart_item|
       OrderProduct.create(
-        product_id: cart_item.product,
+        product_id: cart_item.product
         order_id: @order.id,
         amount: cart_item.amount,
         price: cart_item.product.price
@@ -70,7 +69,7 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_products = @order.order_products.all
+    @order_products = @order.order_products
     @cart_items = current_customer.cart_items.all
     @sum = 0
     @cart_items.each do |cart_item|
