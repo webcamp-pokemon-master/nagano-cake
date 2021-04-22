@@ -65,7 +65,7 @@ class Customer::OrdersController < ApplicationController
         )
     end
     @cart_items.destroy_all
-    redirect_to root_path
+    redirect_to thanks_orders_path
   end
 
 
