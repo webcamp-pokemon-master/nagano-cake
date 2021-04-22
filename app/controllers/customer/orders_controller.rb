@@ -84,6 +84,11 @@ class Customer::OrdersController < ApplicationController
 
   def thanks
   end
+  
+  def nameaddress
+    @delivery_addresses = DeliveryAddress.where(customer: current_customer)
+    ""
+  end 
 
 
   private
