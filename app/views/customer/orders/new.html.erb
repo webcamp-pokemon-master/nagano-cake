@@ -9,11 +9,11 @@
       　<h4>支払い方法</h4>
           <div class="ml-5">
             <%#= f.radio_button :カラム名, key, オプション %>
-            <%= f.radio_button :payment_method, "credit_card", checked: true %>
+            <%= f.radio_button :payment_method, "クレジットカード", checked: true %>
             <%= f.label :payment_method, "クレジットカード" %>
           </div>
           <div class="ml-5">
-            <%= f.radio_button :payment_method, "bank_transfer" %>
+            <%= f.radio_button :payment_method, "銀行振込" %>
             <%= f.label :payment_method, "銀行振込" %>
           </div>
           <!--modelでenumで定義-->
