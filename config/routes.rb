@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :customers
+
+  devise_for :customers, controllers: { registrations: 'customers/registrations',
+                                   sessions: 'customers/sessions' }
+
   root to: 'homes#top'
 
   scope module: :customer do
@@ -29,11 +32,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders do
-      member do
-      get :one_index
-      end
-    end
+    resources :orders
     resources :customers
     resources :genres
     resources :products

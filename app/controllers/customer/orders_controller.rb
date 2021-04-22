@@ -1,9 +1,14 @@
 class Customer::OrdersController < ApplicationController
   def index
+    
     @orders = current_customer.orders
     # or
     #2  @orders = Order.where(customer_id:current_customer)
   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1cf3122a292dd9b1dadff706918180cfb07c2167
 
   def new
     @order = Order.new
@@ -69,6 +74,12 @@ class Customer::OrdersController < ApplicationController
   def thanks
   end
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 1cf3122a292dd9b1dadff706918180cfb07c2167
 
   private
   
