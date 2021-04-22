@@ -11,8 +11,10 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show　#注文履歴詳細
+  @order = Order.find(params[:id])
+	@order_details = @order.order_details
   end
-  
+
   def update
 		@order = Order.find(params[:id])
 	  @order.update(sta)
