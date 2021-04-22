@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders
+    resources :orders do
+      get :one_index
+    end
     resources :customers
     resources :genres
     resources :products
