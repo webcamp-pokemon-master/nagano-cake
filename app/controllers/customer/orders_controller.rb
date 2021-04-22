@@ -73,13 +73,6 @@ class Customer::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products
-    @cart_items = current_customer.cart_items.all
-    @sum = 0
-    @cart_items.each do |cart_item|
-    @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
-    @sum += @subtotal
-    end
-
   end
 
   def thanks
