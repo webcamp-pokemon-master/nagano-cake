@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-10">
       <h4>注文履歴詳細</h4>
-       <%= form_with model:@order, url: "admin_order_path(order)", local: true, method: :patch do |f| %>
+       <%= form_with model: @order, url: admin_orders_path, local: true, method: :patch do |f| %>
           <table align="left" >
             <tr>
               <th>購入者</th>
@@ -31,7 +31,7 @@
           </table>
           <% end %>
 
-          <%= form_with model:@order_product, url: "admin_order_products_path(order_product)", local: true, method: :patch do |f| %>
+          <%= form_with model: @order_product, url: "admin_order_products_path(order_product)", local: true, method: :patch do |f| %>
 
           <table class="table table-bordered" align="left">
             <thead>
