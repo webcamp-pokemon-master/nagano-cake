@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-7 offset-lg-1 mt-5">
-      <h3 style="background:#EEEEEE;">注文情報入力</h3>
+    <h3 class="mt-4 px-4", style="background:#EEEEEE;">注文情報入力</h3>
+  </div>
+  <div class="row">
+    <div class="col-lg-7 offset-lg-1">
       <%= form_with model: @order, url:comfirm_orders_path, local:true do |f| %>
       <table class="table table-borderless">
         <tbody>
-
           　<tr>
              <td><h4>支払い方法</h4></td>
             </tr>
@@ -16,7 +17,6 @@
                 <%= f.label :payment_method, "クレジットカード" %>
               </td>
             </tr>
-
             <tr>
               <td>
                 <%= f.radio_button :payment_method, "bank_transfer" %>
@@ -25,7 +25,6 @@
             </tr>
             <!--modelでenumで定義-->
             <!--enum payment_method: {"クレジットカード": 0, "銀行振込": 1 }-->
-
             <tr>
               <td>
                 <h4>お届け先</h4>
@@ -39,7 +38,6 @@
                 <%= current_customer.last_name %><%= current_customer.first_name%>
               </td>
             </tr>
-
             <tr>
               <td>
                 <%= f.radio_button :selected_address, 2 %>
@@ -72,25 +70,17 @@
             </tr>
             <!--f.text_field :hoge は　controllerでparams[:model][:hoge]で取り出せる-->
             <!--radio_buttonの:hogeとlabelの:hogeは同じにする-->
-
-
-            <tr>
-              <td>
-                <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
-              </td>
-            </tr>
-
-
         </tbody>
       </table>
+      <div class="row">
+  		  <div class="mx-auto">
+  		    <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
-
-
-
-
 
 <!--具体例-->
 <!--ruby.rb-->
