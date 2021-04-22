@@ -78,6 +78,12 @@ class Customer::OrdersController < ApplicationController
   def thanks
   end
 
+  # def nameaddress
+  #   @delivery_addresses = DeliveryAddress.where(customer: current_customer)
+  #   "#{@delivery_addresses.name} + #{@delivery_addresses.address}"
+  # end
+
+  # helper_method :nameaddress
 
   private
   def order_params
