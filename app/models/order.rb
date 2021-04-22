@@ -15,5 +15,10 @@ class Order < ApplicationRecord
 
   # enum_help 参照http://www.monokoto.xyz/enum-help-i18n/
 
+ 
 
+
+
+
+ 
 end

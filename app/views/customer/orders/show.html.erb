@@ -21,7 +21,7 @@
             </tr>
             <tr>
               <th class="table-primary">支払い方法</th>
-              <td><%= @order.payment_method %></td>
+              <td><%= @order.payment_method_i18n %></td>
             </tr>
             <tr>
               <th class="table-primary">ステータス</th>
@@ -34,7 +34,7 @@
           <table class="table table-bordered" align="left" id="tabel-right">
             <tr>
               <th class="table-primary">商品合計</th>
-              <td><%= @sum %></td>
+              <td><%= @order.payment %></td>
             </tr>
             <tr>
               <th class="table-primary">配送料</th>
@@ -42,7 +42,7 @@
             </tr>
             <tr>
               <th class="table-primary">ご請求額</th>
-              <td><%= @sum + @order.postage %></td>
+              <td><%= @order.payment + @order.postage %></td>
             </tr>
           </table>
         </td>
