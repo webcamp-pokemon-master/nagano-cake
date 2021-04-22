@@ -5,6 +5,7 @@
   <div class="row">
     <div class="col-lg-7 offset-lg-1">
       <%= form_with model: @order, url:comfirm_orders_path, local:true do |f| %>
+
       　<h4>支払い方法</h4>
           <div class="ml-5">
             <%#= f.radio_button :カラム名, key, オプション %>
@@ -38,6 +39,7 @@
             </div>
           <table class="table table-borderless ml-5">
             <tbody>
+
             <tr>
               <td>郵便番号(ハイフンなし)</td>
               <td>

@@ -32,7 +32,8 @@
 
 		      <td class="text-center">
   					<%#注文商品%>
-  				  <% order.order_products.each do |f| %>
+  				  <% order.order_products.each do |productname| %>
+  				  <%= productname.product.name %><br>
 				   	<% end %>
   				</td>
 
@@ -43,7 +44,7 @@
 
 		      <td class="text-center">
   					<%#注文ステータス%>
-  					<%= order.status %>
+  					<%= order.status_i18n %>
 						<%#<%= order.user_status %>
 					</td>
 

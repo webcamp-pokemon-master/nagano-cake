@@ -3,14 +3,12 @@ class Customer::OrdersController < ApplicationController
     @orders = current_customer.orders
     # or
     #2  @orders = Order.where(customer_id:current_customer)
-
   end
 
   def new
     @order = Order.new
     @delivery_addresses = DeliveryAddress.where(customer: current_customer)
   end
-
 
 
   def comfirm
@@ -47,12 +45,13 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.orders.new(name: params[:order][:name],
-                                         address: params[:order][:address],
-                                         postal_code: params[:order][:postal_code],
-                                         payment_method: params[:order][:payment_method],
-                                         payment: params[:order][:payment]
-                                         )
+    # @order = current_customer.orders.new(name: params[:order][:name],
+    #                                     address: params[:order][:address],
+    #                                     postal_code: params[:order][:postal_code],
+    #                                     payment_method: params[:order][:payment_method],
+    #                                     payment: params[:order][:payment]
+    #                                     )
+    @order = current_customer.orders.new(order_params)
     @order.save
 
     @cart_items = current_customer.cart_items.all
@@ -73,28 +72,24 @@ class Customer::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products
-    @cart_items = current_customer.cart_items.all
-    @sum = 0
-    @cart_items.each do |cart_item|
-    @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
-    @sum += @subtotal
-    end
-
   end
 
   def thanks
   end
 
-  # def nameaddress
-  #   @delivery_addresses = DeliveryAddress.where(customer: current_customer)
-  #   "#{@delivery_addresses.name} + #{@delivery_addresses.address}"
-  # end
+  def nameaddress
+    @delivery_addresses = DeliveryAddress.where(customer: current_customer)
+    "#{@delivery_addresses.name}. #{@delivery_addresses.address}"
+  end
 
-  # helper_method :nameaddress
+  helper_method :nameaddress
 
   private
   def order_params
-    params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment, :selected_address, :delivery_address_id)
+    params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment)
+  end
+  def address_params
+    params.require(:order).permit(:selected_address, :delivery_address_id)
   end
 
 
