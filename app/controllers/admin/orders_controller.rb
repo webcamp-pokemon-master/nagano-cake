@@ -6,14 +6,11 @@ class Admin::OrdersController < ApplicationController
   end
 
   def one_index
-    @order = customer_id.all
-    @orders = @order.where(customer_id(params[:id]))
+    @orders = Order.where(customer_id:(params[:id]))
     render :index
   end
 
-  def show#注文履歴詳細
-     @order = Order.find(params[:id])
-    @order_products = @order.order_products
+  def show　#注文履歴詳細
   end
 
 

@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders do
+      member do
       get :one_index
+      end
     end
     resources :customers
     resources :genres
