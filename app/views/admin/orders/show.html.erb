@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-10">
       <h4>注文履歴詳細</h4>
-       <%= form_with(@order, url: admin_order_path, method: :patch) do |f| %>
+       <%= form_with model:@order, url: "admin_order_path(order)", local: true, method: :patch do |f| %>
           <table align="left" >
             <tr>
               <th>購入者</th>
@@ -15,8 +15,7 @@
             <tr>
               <th>配送先</th>
               <td>
-                <%= @order.postal_code %><br>
-                <%= @order.address %><br>
+                <%= @order.postal_code %><%= @order.address %><br>
                 <%= @order.name %>
               </td>
             </tr>
@@ -26,9 +25,13 @@
             </tr>
             <tr>
               <th>注文ステータス</th>
-              <td><%= @order.status_i18n %></td>
+              <td><%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "status" %></td>
+              <td><%= f.submit '更新'  ,class: "btn btn-success" %></td>
             </tr>
           </table>
+          <% end %>
+
+          <%= form_with model:@order_product, url: "admin_order_products_path(order_product)", local: true, method: :patch do |f| %>
 
           <table class="table table-bordered" align="left">
             <thead>
@@ -47,13 +50,15 @@
                 <td><%= order_product.price%></td>
                 <td><%= order_product.amount %></td>
                 <td><%= order_product.price* order_product.amount %></td>
-                <td></td>
+                <td>
+                  <%= f.select :making_status, [["着手不可", "着手不可"], ["製作待ち","製作待ち"], ["製作中","製作中"], ["製作完了","製作完了"]], class: "order_status" %>
+                  <%= f.submit '更新'  ,class: "btn btn-success" %>
+                </td>
               </tr>
               <% end %>
             </tbody>
           </table>
-          
-          <table align="left" id="tabel-right">
+          <table align="left" id="tabel-right" valign="top">
             <tr>
               <th>商品合計</th>
               <td><%= @order.payment %></td>
@@ -67,6 +72,7 @@
               <td><%= @order.payment + @order.postage %></td>
             </tr>
           </table>
+          <% end %>
     </div>
-  </div>      
+  </div>
 </div>
