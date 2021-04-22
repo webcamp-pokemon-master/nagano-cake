@@ -10,7 +10,9 @@ class Admin::OrdersController < ApplicationController
   end
 
 
-  def show　#注文履歴詳細
+  def show#注文履歴詳細
+     @order = Order.find(params[:id])
+    @order_products = @order.order_products
   end
 
 
