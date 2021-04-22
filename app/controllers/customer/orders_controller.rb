@@ -1,17 +1,15 @@
 class Customer::OrdersController < ApplicationController
-  helper_method :nameaddress
   def index
     @orders = current_customer.orders
     # or
     #2  @orders = Order.where(customer_id:current_customer)
   end
+  
 
   def new
 
     @order = Order.new
     @delivery_addresses = DeliveryAddress.where(customer: current_customer)
-
-
   end
 
 
@@ -82,10 +80,7 @@ class Customer::OrdersController < ApplicationController
   def thanks
   end
 
-  def nameaddress
-    @delivery_addresses = DeliveryAddress.where(customer: current_customer)
-    return @delivery_addresses.name
-  end
+  
 
 
 

@@ -4,7 +4,6 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :delivery_addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
 
@@ -24,5 +23,5 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.user_status == true)
   end
-  
+
 end
