@@ -24,4 +24,5 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.user_status == true)
   end
+  
 end

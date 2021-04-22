@@ -12,6 +12,7 @@ class Customer::OrdersController < ApplicationController
   end
 
 
+
   def comfirm
     @cart_items = current_customer.cart_items.all
     @ordersnew = Order.new
