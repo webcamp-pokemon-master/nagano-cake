@@ -10,3 +10,7 @@ ja:
         under_construction: 製作中
         ready_to_ship: 発送準備中
         shipped: 発送済み
+    order_product:
+      making_status:
+        cannot_create: 制作不可
+        
