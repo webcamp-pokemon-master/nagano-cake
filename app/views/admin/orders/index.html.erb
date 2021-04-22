@@ -1,14 +1,6 @@
 <div class="container my-5">
   <div class="row">
-
-    <% if params[:customer_id] %>
-			<h2><%= @customer.last_name %>
-		    	<%= @customer.last_name %>さんの注文履歴一覧</h2>
-		<% elsif params[:created_at] == "today" %>
-			<h2>本日の注文履歴一覧</h2>
-		<% else %>
 			<h2>注文履歴一覧</h2>
-		<% end %>
   </div>
 
   <div class="row mt-1">
@@ -45,7 +37,7 @@
 
 		      <td class="text-center">
     		    <%# 注文ステータス%>
-    		    <%= order.status %>
+    		    <%= order.status_i18n %>
 		      </td>
 
 		 <% end %>
