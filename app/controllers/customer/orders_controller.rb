@@ -59,7 +59,7 @@ class Customer::OrdersController < ApplicationController
     # カートアイテムをorder_productsテーブルに保存
     @cart_items.each do |cart_item|
       OrderProduct.create(
-        product_id: cart_item.product,
+        product_id: cart_item.product_id,
         order_id: @order.id,
         amount: cart_item.amount,
         price: cart_item.product.price
@@ -73,13 +73,6 @@ class Customer::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products
-    @cart_items = current_customer.cart_items.all
-    @sum = 0
-    @cart_items.each do |cart_item|
-    @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
-    @sum += @subtotal
-    end
-
   end
 
   def thanks
