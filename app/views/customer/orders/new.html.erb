@@ -5,55 +5,39 @@
   <div class="row">
     <div class="col-lg-7 offset-lg-1">
       <%= form_with model: @order, url:comfirm_orders_path, local:true do |f| %>
-      <table class="table table-borderless">
-        <tbody>
-          　<tr>
-             <td><h4>支払い方法</h4></td>
-            </tr>
-            <tr>
-              <td>
-                <%#= f.radio_button :カラム名, key, オプション %>
-                <%= f.radio_button :payment_method, "credit_card", checked: true %>
-                <%= f.label :payment_method, "クレジットカード" %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.radio_button :payment_method, "bank_transfer" %>
-                <%= f.label :payment_method, "銀行振込" %>
-              </td>
-            </tr>
-            <!--modelでenumで定義-->
-            <!--enum payment_method: {"クレジットカード": 0, "銀行振込": 1 }-->
-            <tr>
-              <td>
-                <h4>お届け先</h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.radio_button :selected_address, 1, checked: true %>
-                <%= f.label :selected_address, "ご自身の住所" %><br>
-                <%= current_customer.postal_code %> <%=current_customer.address %><br>
-                <%= current_customer.last_name %><%= current_customer.first_name%>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.radio_button :selected_address, 2 %>
-                <%= f.label :selected_address, "登録先住所から選択" %>
-                <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
-                <br><%= f.collection_select(:delivery_address_id, @delivery_addresses, :id, :address, prompt: "住所を選択してください") %>
-                <%#= f.select :名前, モデル名.カラム名の複数形.keys, オプション %>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.radio_button :selected_address, 3 %>
-                <%= f.label :selected_address, "新しいお届け先" %><br>
-              </td>
-            </tr>
+      　<h4>支払い方法</h4>
+          <div class="ml-5">
+            <%#= f.radio_button :カラム名, key, オプション %>
+            <%= f.radio_button :payment_method, "credit_card", checked: true %>
+            <%= f.label :payment_method, "クレジットカード" %>
+          </div>
+          <div class="ml-5">
+            <%= f.radio_button :payment_method, "bank_transfer" %>
+            <%= f.label :payment_method, "銀行振込" %>
+          </div>
+          <!--modelでenumで定義-->
+          <!--enum payment_method: {"クレジットカード": 0, "銀行振込": 1 }-->
+
+        <h4>お届け先</h4>
+            <div  class="ml-5">
+              <%= f.radio_button :selected_address, 1, checked: true %>
+              <%= f.label :selected_address, "ご自身の住所" %><br>
+              <%= current_customer.postal_code %> <%=current_customer.address %><br>
+              <%= current_customer.last_name %><%= current_customer.first_name%>
+            </div>
+            <div  class="ml-5 mt-3">
+              <%= f.radio_button :selected_address, 2 %>
+              <%= f.label :selected_address, "登録済住所から選択" %>
+              <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
+              <br><%= f.collection_select(:delivery_address_id, @delivery_addresses, :id, :address, prompt: "住所を選択してください") %>
+              <%#= f.select :名前, モデル名.カラム名の複数形.keys, オプション %>
+            </div>
+            <div class="ml-5 mt-3">
+              <%= f.radio_button :selected_address, 3 %>
+              <%= f.label :selected_address, "新しいお届け先" %><br>
+            </div>
+          <table class="table table-borderless ml-5">
+            <tbody>
             <tr>
               <td>郵便番号(ハイフンなし)</td>
               <td>
@@ -70,11 +54,11 @@
             </tr>
             <!--f.text_field :hoge は　controllerでparams[:model][:hoge]で取り出せる-->
             <!--radio_buttonの:hogeとlabelの:hogeは同じにする-->
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       <div class="row">
   		  <div class="mx-auto">
-  		    <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
+  		    <%= f.submit "確認画面へ進む", class: "btn btn-info px-5" %>
         </div>
       </div>
       <% end %>
