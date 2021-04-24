@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :admins
-
   devise_for :customers, controllers: { registrations: 'customers/registrations',
                                    sessions: 'customers/sessions' }
 
@@ -32,7 +31,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders
+    resources :orders do
+      member do
+      get :one_index
+       end
+    end
     resources :customers
     resources :genres
     resources :products
