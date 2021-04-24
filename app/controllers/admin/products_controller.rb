@@ -2,8 +2,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all.page(params[:page]).per(10)
-    #アプリケーションを完成させよう2の4章参照
-    #@items = Item.page(params[:page]).per(10)
+
   end
 
   def new
@@ -36,6 +35,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_product_path(@product)
     else
+      flash.now[:alert] = 'メッセージを入力してください。'
       render :new
     end
   end
