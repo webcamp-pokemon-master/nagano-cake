@@ -5,6 +5,14 @@
       <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
       <table class="table table-borderless">
         <h1>商品新規登録</h1>
+        <% if @product.errors.any? %>
+          <%= @product.errors.count %>件のエラーが発生しました
+          <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        <% end %>
         <tbody>
             <tr>
              <td>商品画像</td>
@@ -26,7 +34,8 @@
             </tr>
             <tr>
               <td>税抜価格</td>
-              <td><%= f.text_field :price, class: "form-control" %>円</td>
+              <td><%= f.text_field :price, class: "form-control" %>円
+              </td>
             </tr>
             <tr>
               <td>販売ステータス</td>

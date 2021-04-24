@@ -25,8 +25,8 @@
             <td><%= products.id %>
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
-            <td><%= products.genre.name %></td> <%# genres??? %>
-            <%#<td><%= products.status %>
+            <td><%= products.genre.name %></td>
+
             <td><% if products.status == true %>
                   販売中
       				  <% else %>

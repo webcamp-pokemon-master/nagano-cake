@@ -1,7 +1,9 @@
 <div class="container my-5">
   <div class="row">
+    <h3 class="my-5 px-4", style="background:#EEEEEE;">注文履歴詳細</h3>
+  </div>
+  <div class="row">
     <div class="col-md-10">
-      <h4>注文履歴詳細</h4>
       <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
           <table align="left" >
             <tr>
@@ -31,12 +33,9 @@
           </table>
         <% end %>
       </div>
-
-
-
-
-      <div class="row">
-        <div class="col-md-5">
+    </div>
+    <div class="row" id="show-table">
+      <div class="col-md-8 col-md-offset-2">
           <table class="table table-bordered" align="left">
             <thead>
               <tr class="table-primary">
@@ -63,10 +62,10 @@
               <% end %>
               <% end %>
             </tbody>
-            </div>
+          </table>
+        </div>
 
-
-          <div class="col-md-5">
+        <div class="col-md-3 align-self-end" id="show-table2">
           <table id="tabel-right">
             <tr>
               <th>商品合計</th>
@@ -81,8 +80,6 @@
               <td><%= @order.payment + @order.postage %></td>
             </tr>
           </table>
-       </div>
-         </div>
-
-  </div>
+        </div>
+      </div>
 </div>
