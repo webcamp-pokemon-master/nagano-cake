@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-10">
       <h4>注文履歴詳細</h4>
-       <%= form_with model:@order, url: "admin_order_path(order)", local: true, method: :patch do |f| %>
+      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
           <table align="left" >
             <tr>
               <th>購入者</th>
@@ -15,7 +15,7 @@
             <tr>
               <th>配送先</th>
               <td>
-                <%= @order.postal_code %><%= @order.address %><br>
+                〒<%= @order.postal_code %><%= @order.address %><br>
                 <%= @order.name %>
               </td>
             </tr>
@@ -29,10 +29,13 @@
               <td><%= f.submit '更新'  ,class: "btn btn-success" %></td>
             </tr>
           </table>
-          <% end %>
+        <% end %>
+      </div>
 
-          <%= form_with model:@order_product, url: "admin_order_products_path(order_product)", local: true, method: :patch do |f| %>
-
+      <div class="col-md-10">
+        <table>
+          <tr>
+          <td>
           <table class="table table-bordered" align="left">
             <thead>
               <tr class="table-primary">
@@ -45,6 +48,7 @@
             </thead>
             <tbody>
               <% @order_products.each do |order_product| %>
+              <%= form_with model: order_product, url: admin_order_product_path(order_product), method: :patch, local: true do |f| %>
               <tr>
                 <td><%= order_product.product.name %></td>
                 <td><%= order_product.price%></td>
@@ -56,9 +60,12 @@
                 </td>
               </tr>
               <% end %>
+              <% end %>
             </tbody>
           </table>
-          <table align="left" id="tabel-right" valign="top">
+          </td>
+          <td valign="bottom">
+          <table align="left" id="tabel-right">
             <tr>
               <th>商品合計</th>
               <td><%= @order.payment %></td>
@@ -72,7 +79,9 @@
               <td><%= @order.payment + @order.postage %></td>
             </tr>
           </table>
-          <% end %>
+          </td>
+          </tr>
+        </tabel>
     </div>
   </div>
 </div>

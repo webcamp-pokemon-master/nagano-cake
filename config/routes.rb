@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :admins
-
   devise_for :customers, controllers: { registrations: 'customers/registrations',
                                    sessions: 'customers/sessions' }
 
@@ -40,6 +39,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :products
+    resources :order_products, only: [:update]
     get 'homes/top'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
