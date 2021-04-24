@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins,controllers: { registrations: 'customers/registrations',
+                                   sessions: 'customers/sessions' }
   devise_for :customers, controllers: { registrations: 'customers/registrations',
                                    sessions: 'customers/sessions' }
 
-  root to: 'homes#top'
-
   scope module: :customer do
+    root to: 'homes#top'
     delete 'cart_items/destroy_all'
     resources :products
     resources :cart_items,only: [:index,:update,:create,:destroy]
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders do
+
       member do
       get :one_index
        end
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :products
     resources :order_products, only: [:update]
-    get 'homes/top'
+    
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
