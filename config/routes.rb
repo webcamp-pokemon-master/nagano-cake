@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     resources :orders do
 
       member do
-      get :one_index
-       end
-    end
+        get :one_index
+      end
+    end 
     resources :customers
     resources :genres
     resources :products
