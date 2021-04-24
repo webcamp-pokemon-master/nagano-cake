@@ -2,8 +2,6 @@ class Customer::OrdersController < ApplicationController
   def index
 
     @orders = current_customer.orders
-    # or
-    #2  @orders = Order.where(customer_id:current_customer)
   end
 
 
