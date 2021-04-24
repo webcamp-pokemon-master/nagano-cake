@@ -33,10 +33,10 @@
       </div>
 
 
-      <div class="col-md-10">
-      <tabel>
-        <tr>
-        <td>
+
+
+      <div class="row">
+        <div class="col-md-5">
           <table class="table table-bordered" align="left">
             <thead>
               <tr class="table-primary">
@@ -63,10 +63,10 @@
               <% end %>
               <% end %>
             </tbody>
-          </table>
-          </td>
+            </div>
 
-          <td valign="bottom">
+
+          <div class="col-md-5">
           <table id="tabel-right">
             <tr>
               <th>商品合計</th>
@@ -81,9 +81,8 @@
               <td><%= @order.payment + @order.postage %></td>
             </tr>
           </table>
-        </td>
-        </tr>
-        </tabel>
-      </div>
+       </div>
+         </div>
+
   </div>
 </div>
