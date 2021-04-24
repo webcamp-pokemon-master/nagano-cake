@@ -1,14 +1,11 @@
 class Customer::OrdersController < ApplicationController
   def index
-    
+
     @orders = current_customer.orders
     # or
     #2  @orders = Order.where(customer_id:current_customer)
   end
-<<<<<<< HEAD
-=======
 
->>>>>>> 1cf3122a292dd9b1dadff706918180cfb07c2167
 
   def new
     @order = Order.new
@@ -28,7 +25,7 @@ class Customer::OrdersController < ApplicationController
       @order.address     = current_customer.address
       @order.name        = current_customer.last_name + current_customer.first_name
       @order.postal_code = current_customer.postal_code
-      
+
     elsif params[:order][:selected_address] == "2"
       address = DeliveryAddress.find(params[:order][:delivery_address_id])
       @order.address     = address.address
@@ -59,7 +56,7 @@ class Customer::OrdersController < ApplicationController
         product_id: cart_item.product_id,
         order_id: @order.id,
         amount: cart_item.amount,
-        price: cart_item.product.price
+        price: cart_item.product.price * 1.1
         )
     end
     @cart_items.destroy_all
@@ -74,19 +71,13 @@ class Customer::OrdersController < ApplicationController
   def thanks
   end
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 1cf3122a292dd9b1dadff706918180cfb07c2167
 
   private
-  
+
   def order_params
     params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment)
   end
-  
+
   def address_params
     params.require(:order).permit(:selected_address, :delivery_address_id)
   end
