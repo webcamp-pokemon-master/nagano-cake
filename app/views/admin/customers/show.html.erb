@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h2 style="background:#EEEEEE;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
-      <table class="table table-borderless">
+    <div class="col-md-4 mx-auto mb-3 text-center">
+      <h3 style="background:#EEEEEE;" class="rounded-circle"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="col-md-8 mx-auto mb-5">
+     <table class="table table-borderless">
         <tbody>
           <tr>
             <td>会員ID</td>
