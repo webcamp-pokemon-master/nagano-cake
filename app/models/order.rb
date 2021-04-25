@@ -15,6 +15,14 @@ class Order < ApplicationRecord
 
   # enum_help 参照http://www.monokoto.xyz/enum-help-i18n/
 
+  after_update do
+    if self.status == "入金確認"
+      self.order_products.each {|order_product|
+      order_product.update(making_status: "製作待ち")
+      }
+    end
+  end
+
 
 
 
