@@ -3,6 +3,15 @@
     <div class="col-md-3 text-center">
       <h2 style="background:#EEEEEE;" class="rounded-circle">商品一覧画面</h2>
     </div>
+    <div class="col-md-3">
+      <%#= render 'admin/searches/search_form', url: admin_products_path, search: @search %>
+      <%#= search_form_for @search, url: admin_products_path do |f| %>
+      <%#= f.label :name_cont, "商品名を含む" %>
+      <%#= f.search_field :name_cont %>
+      <%#= f.submit "検索", class: "btn btn-primary rounded-pill" %>
+      <%# end %>
+    </div>
+
   </div>
   <div class="row text-right">
     <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-circle text-right ml-auto shadow-sm" %>

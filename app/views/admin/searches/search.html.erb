@@ -1,0 +1,34 @@
+<% if @model == "会員" %>
+	<h3>Users search for "<%= @content %>"</h3>
+<% elsif @model == "商品" %>
+<div class="row mt-1">
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |products| %>
+          <tr>
+            <td><%= products.id %>
+            <td><%= link_to products.name, admin_product_path(products) %></td>
+            <td><%= products.price %></td>
+            <td><%= products.genre.name %></td>
+            <td><% if products.status == true %>
+                  販売中
+      				  <% else %>
+      					  販売停止中
+      				  <% end %>
+      			</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= render 'books/index', books: @records %>
+<% end %>
