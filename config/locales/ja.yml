@@ -16,3 +16,8 @@ ja:
         waiting_create: 制作待ち
         in_production: 製作中
         completed: 制作完了
+    products:
+      genre_id: ジャンル
+      name: 名前
+      introduction: 商品説明
+      price: 税抜価格

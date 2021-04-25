@@ -6,8 +6,8 @@
       <table class="table table-borderless">
         <h1>商品新規登録</h1>
         <% if @product.errors.any? %>
-          <%= @product.errors.count %>件のエラーが発生しました
-          <ul>
+          <span class="text-danger"><%= @product.errors.count %>件のエラーが発生しました</span>
+          <ul class="text-danger">
           <% @product.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
