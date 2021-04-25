@@ -1,6 +1,11 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
+<% flash.each do |key, value| %>
+    <p class="alert alert-<%= key %>">
+      <%= value %>
+    </p>
 <% end %>
+<%#<% if flash[:notice] %>
+<%#<%= flash[:notice] %>
+<%#<% end %>
 
 <div class="container my-5">
 

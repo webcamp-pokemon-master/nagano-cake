@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+ add_flash_types :success #フラッシュメッセージのデザイン種類指示
+
   def index
     @products = Product.all.page(params[:page]).per(10)
     #アプリケーションを完成させよう2の4章参照
@@ -23,7 +25,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_product_path(@product), notice: "変更保存しました"
+      redirect_to admin_product_path(@product), success: "変更保存しました"
     else
       @genre_id = Genre.all
       redirect_to edit_admin_product(@product)
@@ -34,7 +36,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     @genres = Genre.all
     if @product.save
-      redirect_to admin_product_path(@product)
+      redirect_to admin_products_path
     else
       render :new
     end
