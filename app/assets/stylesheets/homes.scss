@@ -12,14 +12,17 @@
   width: 500px;
   background-image: url('nagano-cake-top.jpg');
   background-size: cover;
+  border: outset 5px #900;
 }
 
 .toptext {
+  font-size: 18px;
   height: 150px;
   width: 400px;
   color: white;
   margin: 0 auto;
-  padding-top: 75px;
+  padding-top: 50px;
+  text-shadow: 1px 2px 3px #808080;
 }
 
 .newproducts {
