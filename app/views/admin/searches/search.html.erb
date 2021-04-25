@@ -1,14 +1,7 @@
-<div class="container my-5">
-  <div class="row">
-    <div class="col-md-3 text-center">
-      <h2 style="background:#EEEEEE;" class="rounded-circle">商品一覧画面</h2>
-    </div>
-  </div>
-  <div class="row text-right">
-    <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-circle text-right ml-auto shadow-sm" %>
-  </div>
-
-  <div class="row mt-1">
+<% if @model == "会員" %>
+	<h3>Users search for "<%= @content %>"</h3>
+<% elsif @model == "商品" %>
+<div class="row mt-1">
     <table class="table table-hover text-center">
       <thead>
         <tr>
@@ -19,8 +12,6 @@
           <th>ステータス</th>
         </tr>
       </thead>
-
-
       <tbody>
         <% @products.each do |products| %>
           <tr>
@@ -28,7 +19,6 @@
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
             <td><%= products.genre.name %></td>
-
             <td><% if products.status == true %>
                   販売中
       				  <% else %>
@@ -40,15 +30,5 @@
       </tbody>
     </table>
   </div>
-
-
-  <div class="container">
-    <div class="row">
-     <div class="col-md-4 offset-md-4 py-2  mt-5">
-      <%= paginate @products %>
-     </div>
-    </div>
-  </div>
-
-
-</div>
+  <%= render 'books/index', books: @records %>
+<% end %>

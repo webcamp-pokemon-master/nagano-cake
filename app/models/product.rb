@@ -13,4 +13,7 @@ class Product < ApplicationRecord
   end
   validates :genre_id, presence: true
 
+  def self.search_for(content)
+    Product.where("name LIKE?", "%#{content}%")
+  end
 end
