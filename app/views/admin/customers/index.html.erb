@@ -1,7 +1,11 @@
-<div class="container">
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-2 mx-auto mb-3 text-center">
+      <h2 style="background:#EEEEEE;" class="rounded-circle">会員⼀覧</h2>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h2 style="background:#EEEEEE;">会員⼀覧</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -32,7 +36,7 @@
           <% end %>
         </tbody>
         <%= paginate @customers %>
-    </div>
+     </div>
   </div>
 </div>
 

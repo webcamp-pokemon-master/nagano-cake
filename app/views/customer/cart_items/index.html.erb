@@ -4,7 +4,7 @@
         <h2 class="red-border px-3 pb-1">ショッピングカート</h2>
       </div>
 			<div class="ml-auto">
-			   <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-sm btn-danger" %>
+			   <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
 			</div>
     </div>
     <div class="row">
@@ -32,7 +32,7 @@
 							<%= form_for(cart_item, method: :patch, remote: true) do |f| %>
                 <div>
                   <%= f.number_field :amount, min:1,class: "col-4" %>
-                  <%= f.submit "変更", class: "btn btn-sm btn-success offset-1 col-4" %>
+                  <%= f.submit "変更", class: "btn btn-sm btn-success rounded-pill offset-1 col-4" %>
                 </div>
                 <% end %>
 						</td>
@@ -40,7 +40,7 @@
 							<%= (cart_item.product.price * 1.1).floor * cart_item.amount %>
 						</td>
 						<td>
-							<%= link_to "削除する",cart_item_path(cart_item),method: :delete,class: "btn btn-sm btn-danger" %>
+							<%= link_to "削除する",cart_item_path(cart_item),method: :delete,class: "btn btn-sm btn-danger rounded-pill" %>
 						</td>
 					</tr>
 				<% end %>
@@ -50,7 +50,7 @@
 
 		<div class="row">
 		  <div class="col-4">
-		    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+		    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary rounded-pill" %>
 		  </div>
 		<div class="col-4 offset-8">
       <table class="table table-bordered text-left">
@@ -69,7 +69,7 @@
     <% if @cart_items.present? %>
     <div class="row">
 		  <div class="mx-auto">
-		    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-lg" %>
+		    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-lg rounded-pill" %>
       </div>
     </div>
     <% else %>

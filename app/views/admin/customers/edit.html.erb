@@ -1,60 +1,72 @@
-<div class="container">
-  <div class="row">
-  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
-  </div>
-  <%= render 'layouts/errors', obj: @customer %>
-  <%= form_with(model:@customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
-  <div class="row">
-    <table class="table table-borderless col-md-10">
-      <tbody>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :会員id %></th>
-            <td><%= f.label :"#{@customer.id}" %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :氏名 %></th>
-              <td><%= f.text_field :last_name %></td>
-              <td><%= f.text_field :first_name %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :フリガナ %></th>
-              <td><%= f.text_field :last_name_kana %></td>
-              <td><%= f.text_field :first_name_kana %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :郵便番号 %></th>
-            <td><%= f.text_field :postal_code %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :住所 %></th>
-              <td colspan="2"><%= f.text_field :address , :size=>"50" %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :電話番号 %></th>
-              <td><%= f.text_field :phone_number %></td>
-          </tr>
-          <tr>
-            <th class="font-weight-normal"><%= f.label :メールアドレス %></th>
-              <td><%= f.email_field :email %></td>
-          </tr>
-          
-        </tbody>
-      </table>
 
-      
-
-      
-      <div class="form-group">
-        <%= f.label :会員ステータス %>
-          <%= f.radio_button :user_status, true %>
-        　<%= f.label :user_status, "有効" %>
-        　<%= f.radio_button :user_status, false %>
-        　<%= f.label :user_status, "退会" %>
-      </div>
-      <div class="actions  col-10">
-        <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6"%>
-      </div>
-<% end %>
-
+<div class="container my-5">
+  <dv class="row">
+    <div class="col-md-5 text-center mb-3">
+      <h3 style="background:#EEEEEE;" class="rounded-circle">
+        <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+      </h3>
     </div>
+  </dv>
+      <div class="row">
+        <div class="col-md-8 mb-5">
+          <%= render 'layouts/errors', obj: @customer %>
+          <%= form_with(model:@customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
+            <div class="form-group">
+              <%= f.label :会員id %>
+              <%= f.label :"#{@customer.id}" %>
+              </div>
+
+            <div class="form-group">
+              <%= f.label :氏名 %>
+              <div class="row">
+                <%= f.text_field :last_name, class: "form-control offset-1 col-4"%>
+                <%= f.text_field :first_name, class: "form-control offset-1 col-4"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :フリガナ %>
+              <div class="row">
+                <%= f.text_field :last_name_kana, class: "form-control offset-1 col-4"%>
+                <%= f.text_field :first_name_kana, class: "form-control offset-1 col-4"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :郵便番号 %>
+              <%= f.text_field :postal_code, class: "form-control offset-1 col-4"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :住所 %>
+              <%= f.text_field :address, class: "form-control offset-1 col-10"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :電話番号 %>
+              <%= f.text_field :phone_number, class: "form-control offset-1 col-4"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, class: "form-control offset-1 col-4"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :会員ステータス %>
+                <%= f.radio_button :user_status, true %>
+              　<%= f.label :user_status, "有効" %>
+              　<%= f.radio_button :user_status, false %>
+              　<%= f.label :user_status, "退会" %>
+            </div>
+            <div class="actions  col-10">
+              <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6 rounded-pill"%>
+            </div>
+          <% end %>
+>>>>>>> origin/develop
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
