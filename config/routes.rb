@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admins,controllers: { registrations: 'customers/registrations',
+  devise_for :admins,controllers: {registrations: 'customers/registrations',
                                    sessions: 'customers/sessions' }
-  devise_for :customers, controllers: { registrations: 'customers/registrations',
-                                   sessions: 'customers/sessions' }
+  devise_for :customers, controllers: {registrations: 'customers/registrations',
+                                       sessions: 'customers/sessions' }
 
   scope module: :customer do
     root to: 'homes#top'
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :products
     resources :order_products, only: [:update]
     get "search" => "searches#search"
+    # admin_search_path
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
