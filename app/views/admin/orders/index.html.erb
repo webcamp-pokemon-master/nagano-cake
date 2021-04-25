@@ -30,12 +30,10 @@
 		        <%= order.customer.last_name %>
             <%= order.customer.first_name %>
 		      </td>
-
 		      <td class="text-center">
 		        <%# 注文個数%>
-            <%= order.order_products.count %>
+            <%= order.sum_order_products %>
 		      </td>
-
 		      <td class="text-center">
     		    <%# 注文ステータス%>
     		    <%= order.status_i18n %>
