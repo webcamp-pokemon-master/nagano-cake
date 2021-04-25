@@ -16,8 +16,10 @@ class Order < ApplicationRecord
   # enum_help 参照http://www.monokoto.xyz/enum-help-i18n/
 
 
-
-
+  def sum_order_products
+    self.order_products.inject(0) {|sum, object| sum + object.amount}
+  end
+  #admin注文履歴一覧の個数を合計個数にする際に使用
 
 
 
