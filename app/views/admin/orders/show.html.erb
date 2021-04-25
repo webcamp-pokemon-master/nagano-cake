@@ -43,7 +43,7 @@
               <th>単価(税込)</th>
               <th>個数</th>
               <th>小計</th>
-              <th>制作ステータス</th>
+              <th>製作ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -71,11 +71,11 @@
           <td><%= @order.payment %></td>
         </tr>
         <tr>
-          <th>配送料</th>
+          <th>送料</th>
           <td><%= @order.postage%></td>
         </tr>
         <tr>
-          <th>ご請求額</th>
+          <th>請求金額合計</th>
           <td><%= @order.payment + @order.postage %></td>
         </tr>
       </table>
