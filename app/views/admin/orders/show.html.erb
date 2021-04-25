@@ -1,39 +1,39 @@
-<div class="container mt-3 mb-5">
+<div class="container my-5">
   <div class="row">
-    <h3 class="my-5 px-4 rounded-circle", style="background:#EEEEEE;">注文履歴詳細</h3>
+    <h3 class="my-5 px-4", style="background:#EEEEEE;">注文履歴詳細</h3>
   </div>
   <div class="row">
     <div class="col-md-10">
       <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-        <table align="left" >
-          <tr>
-            <th>購入者</th>
-            <td><%= @order.name %></td>
-          </tr>
-          <tr>
-            <th>注文日</th>
-            <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-          </tr>
-          <tr>
-            <th>配送先</th>
-            <td>
-              〒<%= @order.postal_code %><%= @order.address %><br>
-              <%= @order.name %>
-            </td>
-          </tr>
-          <tr>
-            <th>支払い方法</th>
-            <td><%= @order.payment_method %></td>
-          </tr>
-          <tr>
-            <th>注文ステータス</th>
-            <td><%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "status" %></td>
-            <td><%= f.submit '更新'  ,class: "btn btn-success rounded-pill" %></td>
-          </tr>
-        </table>
-      <% end %>
+          <table align="left" >
+            <tr>
+              <th>購入者</th>
+              <td><%= @order.name %></td>
+            </tr>
+            <tr>
+              <th>注文日</th>
+              <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            </tr>
+            <tr>
+              <th>配送先</th>
+              <td>
+                〒<%= @order.postal_code %><%= @order.address %><br>
+                <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+              <th>支払い方法</th>
+              <td><%= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <th>注文ステータス</th>
+              <td><%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "status" %></td>
+              <td><%= f.submit '更新'  ,class: "btn btn-success" %></td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
     </div>
-  </div>
   <div class="row mb-5" id="show-table">
     <div class="col-md-8 col-md-offset-2">
       <table class="table table-bordered" align="left">

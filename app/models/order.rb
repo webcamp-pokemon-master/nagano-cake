@@ -24,8 +24,10 @@ class Order < ApplicationRecord
   end
 
 
-
-
+  def sum_order_products
+    self.order_products.inject(0) {|sum, object| sum + object.amount}
+  end
+  #admin注文履歴一覧の個数を合計個数にする際に使用
 
 
 
