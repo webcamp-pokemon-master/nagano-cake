@@ -33,5 +33,4 @@ class ApplicationController < ActionController::Base
       new_customer_session_path
     end
   end
-
 end
