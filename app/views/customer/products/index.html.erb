@@ -11,7 +11,7 @@
           <div class="product-container mr-5">
             <%= link_to product_path(product.id), class: "btn-link  font-weight-bold", :style=>"color:black" do %>
             <div class="mt-4">
-              <%= attachment_image_tag(product, :image, size: "180x130", fallback: "no_image.jpg") %>
+              <%= attachment_image_tag(product, :image, :fill, 180, 130, fallback: "no_image.jpg", class: "img-thumbnail") %>
             </div>
             <p class="mt-2">
               <%= product.name %>
