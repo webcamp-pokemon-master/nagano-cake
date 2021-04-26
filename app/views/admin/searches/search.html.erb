@@ -1,7 +1,57 @@
-<% if @model == "会員" %>
-	<h3>Users search for "<%= @content %>"</h3>
-<% elsif @model == "商品" %>
-<div class="row mt-1">
+<% if @range == "会員" %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-2 mx-auto mb-3 text-center">
+      <h2 style="background:#EEEEEE;" class="rounded-circle">会員⼀覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>⽒名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td>
+            <%= link_to admin_customer_path(customer) do %>
+            <%= customer.last_name %><%= customer.first_name %>
+            <% end %>
+            </td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.user_status == true %>
+              <p class="text-success">有効</p>
+              <% else %>
+              <p>退会</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+     </div>
+  </div>
+</div>
+
+<% else @range == "商品" %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <h2 style="background:#EEEEEE;" class="rounded-circle">商品一覧画面</h2>
+    </div>
+  </div>
+  <div class="row text-right">
+    <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-circle text-right ml-auto shadow-sm" %>
+  </div>
+
+  <div class="row mt-1">
     <table class="table table-hover text-center">
       <thead>
         <tr>
@@ -12,6 +62,8 @@
           <th>ステータス</th>
         </tr>
       </thead>
+
+
       <tbody>
         <% @products.each do |products| %>
           <tr>
@@ -19,6 +71,7 @@
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
             <td><%= products.genre.name %></td>
+
             <td><% if products.status == true %>
                   販売中
       				  <% else %>
@@ -30,5 +83,6 @@
       </tbody>
     </table>
   </div>
-  <%= render 'books/index', books: @records %>
+</div>
+
 <% end %>
