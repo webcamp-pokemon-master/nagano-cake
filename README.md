@@ -2,7 +2,7 @@
 **Nagano-PokemonCenter CakeShop** :smile:
 
 ## 説明:kissing_heart:
-ポケモン好きなShimayanが3匹のポケモンを引き連れて  プログラミングに挑戦。長野県のケーキ屋さんECサイトを作成しました。  お客様は商品の注文、支払い、配送先の指定などが可能です。  管理者側では商品の新規追加、お客様情報管理、製作状況管理などが可能です。
+ポケモン好きなShimayanが3匹のポケモンを引き連れて</br>プログラミングに挑戦。長野県のケーキ屋さんECサイトを作成しました。</br>お客様は商品の注文、支払い、配送先の指定などが可能です。</br>管理者側では商品の新規追加、お客様情報管理、製作状況管理などが可能です。
 
 ### ER図
 <img src="https://user-images.githubusercontent.com/79110505/116027710-8e6de400-a690-11eb-8dc1-7d6aeee5a30c.png" width="320">
@@ -18,7 +18,7 @@
 
 ## 使い方
 
- $ git clone https://github.com/webcamp-pokemon-master/nagano-cake  $ cd nagano-cake  $ bundle install  $ rails db:migrate  $ rails s
+ $ git clone https://github.com/webcamp-pokemon-master/nagano-cake</br>$ cd nagano-cake</br>$ bundle install</br>$ rails db:migrate</br>$ rails s
 
 	* 管理者側ログイン(https://27f9643b77ab40f3a3df87031e8b9c6b.vfs.cloud9.us-east-1.amazonaws.com/admins/sign_in)
 	* お客様側ログイン(https://27f9643b77ab40f3a3df87031e8b9c6b.vfs.cloud9.us-east-1.amazonaws.com/customers/sign_in)
@@ -37,7 +37,7 @@
   ### メンバー
   * **Shimayan**
 
-<img src="https://user-images.githubusercontent.com/79110505/116030829-6afa6780-a697-11eb-8511-69e087ec38aa.png" height="150" width="150">
+<img src="https://user-images.githubusercontent.com/79110505/116030829-6afa6780-a697-11eb-8511-69e087ec38aa.png" height="200" width="150">
 
   * **Masa**
 
