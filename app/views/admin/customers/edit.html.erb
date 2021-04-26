@@ -7,7 +7,7 @@
       </h3>
     </div>
   </div>
-
+  <div class="row">
     <div class="col-md-8 mx-auto mb-5">
       <%= render 'layouts/errors', obj: @customer %>
       <%= form_with(model:@customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
