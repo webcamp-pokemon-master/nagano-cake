@@ -1,4 +1,4 @@
-<% if @range == "会員" %>
+<% if @customers.present? %>
 <div class="container my-5">
   <div class="row">
     <div class="col-md-3 text-center">
@@ -38,8 +38,10 @@
      </table>
   </div>
 </div>
+<% else %>
+<% end %>
 
-<% else @range == "商品" %>
+<% if @products.present? %>
 <div class="container my-5">
   <div class="row">
     <div class="col-md-3 text-center">
@@ -83,5 +85,6 @@
     </table>
   </div>
 </div>
-
+<% else %>
 <% end %>
+<!--<#% end %>-->
