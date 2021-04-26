@@ -10,9 +10,10 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
+
     <header class="bg-secondary">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+
           <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,19 +67,22 @@
               <% end %>
             </ul>
           </div>
-        </div>
       </nav>
       <% if admin_signed_in? %>
         <div class="search_form text-right">
         <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
           <%= f.text_field :content %>
-          
           <%= f.submit "検索", class: "btn btn-primary" %>
         <% end %>
         </div>
       <% end %>
-
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer class="footertext">
+      © All rights reserved by PokemonMaster.
+    </footer>
+
   </body>
 </html>

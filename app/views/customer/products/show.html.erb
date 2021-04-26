@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row offset-1 mt-5">
     <div class="col-4">
-      <%= attachment_image_tag(@product, :image, size: "340x220", fallback: "no_image.jpg" ) %>
+      <%= attachment_image_tag(@product, :image, size: "340x220", fallback: "no_image.jpg", class: "img-thumbnail" ) %>
     </div>
     <div class="col-xs-6 offset-1">
       <h2 class="font-weight-bold"><%= @product.name %></h2>
