@@ -23,9 +23,11 @@ before_action :ensure_correct_customer, {only: [:show, :edit]}
   def out
    @customer = current_customer
    @customer.update(user_status: false)
+   #reset_session または　sign_out current_customer でログアウト
+   #アカウント削除のpathと被るためコントローラー内でログアウト指示
+    sign_out current_customer
    redirect_to root_path
   end
-
 
 
   private

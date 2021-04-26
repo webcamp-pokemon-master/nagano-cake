@@ -7,6 +7,7 @@
   <div class="row text-right">
     <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-circle text-right ml-auto shadow-sm" %>
   </div>
+
   <div class="row mt-1">
     <table class="table table-hover text-center">
       <thead>
@@ -18,6 +19,8 @@
           <th>ステータス</th>
         </tr>
       </thead>
+
+
       <tbody>
         <% @products.each do |products| %>
           <tr>
@@ -25,6 +28,7 @@
             <td><%= link_to products.name, admin_product_path(products) %></td>
             <td><%= products.price %></td>
             <td><%= products.genre.name %></td>
+
             <td><% if products.status == true %>
                   販売中
       				  <% else %>
@@ -36,6 +40,8 @@
       </tbody>
     </table>
   </div>
+
+
   <div class="container">
     <div class="row">
      <div class="col-md-4 offset-md-4 py-2  mt-5">
@@ -43,4 +49,6 @@
      </div>
     </div>
   </div>
+
+
 </div>
