@@ -69,17 +69,17 @@
               </ul>
             </div>
         </nav>
-      <% if admin_signed_in? %>
-        <div class="col-md-2 float-right mt-3">
-          <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :content, placeholder: "会員名or商品名", class:"form-control form-control-sm" %>
-            <%= f.button :type => "submit", style: 'border-style: none; background: none; cursor:pointer' do %>
-              <i class='fa fa-search'></i>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
     </header>
+    <% if admin_signed_in? %>
+      <div class="col-md-2 float-right mt-3">
+        <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+          <%= f.text_field :content, placeholder: "会員名or商品名", class:"form-control form-control-sm" %>
+          <%= f.button :type => "submit", style: 'border-style: none; background: none; cursor:pointer' do %>
+            <i class='fa fa-search'></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
     <main>
       <%= yield %>
     </main>

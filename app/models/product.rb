@@ -7,10 +7,12 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true,numericality: { only_integer: true }
+  
   def price=(value)
     value.tr!('０-９', '0-9') if value.is_a?(String)
     super(value)
   end
+  
   validates :genre_id, presence: true
 
   def self.search_for(content)
