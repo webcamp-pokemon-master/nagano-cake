@@ -10,7 +10,7 @@
       <%= form_with model: @genre, url: "/admin/genres/#{@genre.id}",local:true do |f| %>
         ジャンル名
         <%= f.text_field :name %>
-        <%= f.submit "変更を保存", class: "btn btn-success rounded-pill" %>
+        <%= f.submit "変更を保存", class: "btn btn-outline-success rounded-pill" %>
       <% end %>
     </div>
   </div>
