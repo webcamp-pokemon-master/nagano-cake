@@ -8,83 +8,81 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="d-flex flex-column">
-<div class="wrapper">
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
 
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/"><%= image_tag('logo (6).png') %></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if customer_signed_in? %>
+                  <span class="text-light d-flex align-items-center mr-5">ようこそ、<%= current_customer.last_name %>さん！</span>
+                  <li>
+                    <%= link_to "マイページ", customer_path(current_customer.id), class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "商品一覧", products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "カート", cart_items_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-light btn btn-outline-light" %>
+                  </li>
+                <% elsif admin_signed_in? %>
+                  <li>
+                    <%= link_to "商品⼀覧", admin_products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "会員⼀覧", admin_customers_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "注⽂履歴⼀覧", admin_orders_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "ジャンル⼀覧", admin_genres_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-outline-light" %>
+                  </li>
 
-          <a class="navbar-brand" href="/"><%= image_tag('logo (6).png') %></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if customer_signed_in? %>
-                <span class="text-light d-flex align-items-center mr-5">ようこそ、<%= current_customer.last_name %>さん！</span>
-                <li>
-                  <%= link_to "マイページ", customer_path(current_customer.id), class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "商品一覧", products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "カート", cart_items_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-light btn btn-outline-light" %>
-                </li>
-              <% elsif admin_signed_in? %>
-                <li>
-                  <%= link_to "商品⼀覧", admin_products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "会員⼀覧", admin_customers_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "注⽂履歴⼀覧", admin_orders_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "ジャンル⼀覧", admin_genres_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-outline-light" %>
-                </li>
-
-              <% else %>
-                <li>
-                  <%= link_to "About", homes_about_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "商品一覧", admin_products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
-                </li>
-                <li>
-                  <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-light btn btn-outline-light" %>
-                </li>
-              <% end %>
-            </ul>
+                <% else %>
+                  <li>
+                    <%= link_to "About", homes_about_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "商品一覧", admin_products_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-light btn btn-outline-light mr-2" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-light btn btn-outline-light" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+        </nav>
+        <% if admin_signed_in? %>
+          <div class="search_form text-right">
+          <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+          <% end %>
           </div>
-      </nav>
-      <% if admin_signed_in? %>
-        <div class="search_form text-right">
-        <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-          <%= f.text_field :content %>
-          <%= f.submit "検索", class: "btn btn-primary" %>
         <% end %>
-        </div>
-      <% end %>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
 
-    <footer class="footertext">
-      <p>© All rights reserved by PokemonMaster.</p>
-    </footer>
-</div>
+      <footer class="footertext">
+        <p>© All rights reserved by PokemonMaster.</p>
+      </footer>
+    </div>
   </body>
 </html>
