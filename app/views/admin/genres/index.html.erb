@@ -10,7 +10,7 @@
       <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
       ジャンル名
       <%= f.text_field :name %>
-      <%= f.submit "新規登録", class: "btn btn-success rounded-pill" %>
+      <%= f.submit "新規登録", class: "btn btn-outline-success rounded-pill" %>
       <% end %>
     </div>
   </div>
@@ -28,7 +28,7 @@
           <td>
             <%= genre.name %>
           </td>
-          <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success rounded-pill" %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-outline-success rounded-pill" %></td>
         </tr>
         <% end %>
       </tbody>
