@@ -2,7 +2,6 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-5 text-center mx-auto mb-3">
-
       <h3 style="background:#EEEEEE;" class="rounded-circle">
         <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
       </h3>
@@ -10,7 +9,6 @@
   </div>
 
     <div class="col-md-8 mx-auto mb-5">
-
       <%= render 'layouts/errors', obj: @customer %>
       <%= form_with(model:@customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
         <div class="form-group">
@@ -54,12 +52,11 @@
           　<%= f.radio_button :user_status, false %>
           　<%= f.label :user_status, "退会" %>
         </div>
-        <div class="actions text-center">
-
+        <div class="actions ml-5">
           <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6 rounded-pill"%>
         </div>
       <% end %>
     </div>
   </div>
-</div>
+
 
