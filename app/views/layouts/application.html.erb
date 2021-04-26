@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;900&display=swap" rel="stylesheet">
   </head>
   <body class="d-flex flex-column">
     <div class="wrapper">
@@ -68,9 +69,9 @@
             </div>
         </nav>
       <% if admin_signed_in? %>
-        <div class="col-md-2 float-right">
+        <div class="col-md-2 float-right mt-3">
           <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :content, placeholder: "会員名or商品名", class:"form-control" %>
+            <%= f.text_field :content, placeholder: "会員名or商品名", class:"form-control form-control-sm" %>
             <%= f.button :type => "submit", style: 'border-style: none; background: none; cursor:pointer' do %>
               <i class='fa fa-search'></i>
             <% end %>
