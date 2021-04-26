@@ -2,7 +2,8 @@
 **Nagano-PokemonCenter CakeShop**:sparkles:
 
 ## 説明:black_nib:
-ポケモン好きなShimayanが3匹のポケモンを引き連れて</br>プログラミングに挑戦。長野県のケーキ屋さんECサイトを作成しました。</br>お客様は商品の注文、支払い、配送先の指定などが可能です。</br>管理者側では商品の新規追加、お客様情報管理、製作状況管理などが可能です。
+ポケモン好きなShimayanが3匹のポケモンを引き連れて</br>プログラミングに挑戦。長野県のケーキ屋さんECサイトを作成しました。</br>お客様は商品の注文、支払い、配送先の指定などが可能です。</br>管理者側では商品の新規追加、お客様情報管理、製作状況管理などが可能です。<br>
+※フッター画像は<a href="https://pokemon.originalstitch.com/info/20200410.html">ポケモンシャツ様配布壁紙<a>よりお借りしました。
 
 ### ER図:triangular_ruler:
 <img src="https://user-images.githubusercontent.com/79110505/116027710-8e6de400-a690-11eb-8dc1-7d6aeee5a30c.png" width="320">

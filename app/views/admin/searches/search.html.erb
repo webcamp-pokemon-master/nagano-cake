@@ -1,4 +1,4 @@
-
+<% if @customers.present? || @products.present? %>
 <% if @customers.present? %>
 <div class="container my-5">
   <div class="row">
@@ -87,5 +87,13 @@
   </div>
 </div>
 <% else %>
+
 <% end %>
-<!--<#% end %>-->
+<% else %>
+<div class="container my-5">
+  <div class="row">
+    <h2 style="background:#EEEEEE;" class="rounded-circle">一致する情報は見つかりませんでした</h2>
+  </div>
+</div>
+<% end %>
+
