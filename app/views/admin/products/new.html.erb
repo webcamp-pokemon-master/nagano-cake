@@ -6,8 +6,8 @@
   </div>
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <table class="table table-borderless">
       <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
+      <table class="table table-borderless">
         <% if @product.errors.any? %>
           <span class="text-danger"><%= @product.errors.count %>件のエラーが発生しました</span>
           <ul class="text-danger">
