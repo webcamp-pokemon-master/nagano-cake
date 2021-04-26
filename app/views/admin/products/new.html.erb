@@ -1,10 +1,13 @@
-
 <div class="container">
   <div class="row">
+  <div class="col-md-3 mx-auto text-center">
+  <h3 style="background:#EEEEEE;" class="rounded-circle">商品新規登録</h3>
+  </div>
+  </div>
+  <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
       <table class="table table-borderless">
-        <h1>商品新規登録</h1>
+      <%= form_with model: @product, url:admin_products_path, local:true do |f| %>
         <% if @product.errors.any? %>
           <span class="text-danger"><%= @product.errors.count %>件のエラーが発生しました</span>
           <ul class="text-danger">
