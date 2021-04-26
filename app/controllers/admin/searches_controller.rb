@@ -1,13 +1,13 @@
-class Admin::SerchesController < ApplicationController
+class Admin::SearchesController < ApplicationController
 
 
   def search
   	@range = params[:range]
 		@content = params[:content]
-		if @model == "会員"
-			@records = Customer.search_for(@content)
+		if @range == "会員"
+			@customers = Customer.search_for(@content).page(params[:page]).per(10)
 		else
-			@records = Product.search_for(@content)
+			@products = Product.search_for(@content).page(params[:page]).per(10)
 		end
   end
 end
