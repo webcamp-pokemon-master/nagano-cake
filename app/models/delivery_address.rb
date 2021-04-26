@@ -4,7 +4,7 @@ class DeliveryAddress < ApplicationRecord
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 
   def nameaddress
-    self.name + self.address + self.postal_code
+    "〒" + self.postal_code + "　" + self.address + "　" + self.name
   end
 end
 
