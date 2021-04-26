@@ -70,11 +70,11 @@
           </div>
       </nav>
       <% if admin_signed_in? %>
-        <div class="search_form text-right">
-        <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-          <%= f.text_field :content %>
-          <%= f.submit "検索", class: "btn btn-primary" %>
-        <% end %>
+        <div class="col text-right">
+          <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit "検索", class: "btn btn-sm btn-outline-secondary" %>
+          <% end %>
         </div>
       <% end %>
     </header>
