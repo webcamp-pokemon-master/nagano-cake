@@ -16,8 +16,25 @@ ja:
         waiting_create: 制作待ち
         in_production: 製作中
         completed: 制作完了
-    products:
-      genre_id: ジャンル
-      name: 名前
-      introduction: 商品説明
-      price: 税抜価格
+
+  activerecord:
+    attributes:
+      customer:
+        first_name: 名
+        last_name: 姓
+        first_name_kana: 名（フリガナ)
+        last_name_kana: 姓(フリガナ)
+        phone_number: 携帯番号
+        postal_code: 郵便番号
+        address: 住所
+      product:
+        genre: ジャンル
+        name: 商品名
+        introduction: 商品説明
+        price: 税抜価格
+      order:
+        name: 配送先氏名
+        address: 配送先住所
+        postal_code: 配送先郵便番号
+     
+
