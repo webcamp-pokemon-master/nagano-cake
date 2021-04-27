@@ -1,8 +1,6 @@
 class Customer::OrdersController < ApplicationController
-
-  before_action :authenticate_customer!
-
   def index
+
     @orders = current_customer.orders
   end
 
@@ -36,8 +34,7 @@ class Customer::OrdersController < ApplicationController
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
       unless @order.valid? == true
-         @delivery_addresses = DeliveryAddress.where(customer: current_customer)
-         
+        @delivery_addresses = DeliveryAddress.where(customer: current_customer)
         render :new
       end
     end
