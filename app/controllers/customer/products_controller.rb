@@ -1,5 +1,6 @@
 class Customer::ProductsController < ApplicationController
 
+
   def index
     @products = Product.all.page(params[:page]).per(8)
     #アプリケーションを完成させよう2の4章参照
