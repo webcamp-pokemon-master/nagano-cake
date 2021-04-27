@@ -4,8 +4,8 @@ class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
 
   validates :postal_code, length: {is: 7}, numericality: {only_integer: true}
-  validates :customer_id, :address, :name, :postage, :payment, :payment_method, presence: true
-  validates :postage, :payment, numericality: {only_integer: true }
+  validates :customer_id, :address, :name, :postage, :payment_method, presence: true
+  validates :postage, numericality: {only_integer: true }
 
 
 # 　反映テスト
