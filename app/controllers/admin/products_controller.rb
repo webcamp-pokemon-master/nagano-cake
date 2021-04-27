@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+ before_action :authenticate_admin!, except: [:index,:show]
+
  add_flash_types :success #フラッシュメッセージのデザイン種類指示
 
   def index

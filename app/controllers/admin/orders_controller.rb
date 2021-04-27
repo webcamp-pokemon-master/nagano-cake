@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
+  before_action :authenticate_admin!
 
   def index  #注文履歴一覧
     @orders = Order.all.page(params[:page]).per(10)

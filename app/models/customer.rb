@@ -28,9 +28,5 @@ class Customer < ApplicationRecord
     Customer.where(['first_name LIKE(?) OR last_name LIKE(?) OR first_name_kana LIKE(?) OR last_name_kana LIKE(?) OR (last_name || first_name) LIKE(?) OR (last_name_kana || first_name_kana) LIKE(?)',
                     "%#{content}%","%#{content}%","%#{content}%","%#{content}%","%#{content}%","%#{content}%"])
   end
-
-  def fullname
-    self.last_name + self.first_name
-  end
-
+  # sqlite 文字列結合 last_name || first_name
 end
