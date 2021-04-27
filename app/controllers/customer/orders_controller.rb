@@ -1,8 +1,6 @@
 class Customer::OrdersController < ApplicationController
-
-  before_action :authenticate_customer!
-
   def index
+
     @orders = current_customer.orders
   end
 
@@ -14,7 +12,6 @@ class Customer::OrdersController < ApplicationController
 
   def comfirm
     @cart_items = current_customer.cart_items.all
-    @ordersnew = Order.new
     @order = Order.new(customer: current_customer)
     # 空のインスタンスを生成し、customerカラムにcurrento_customerを入れている
     @order.payment_method = params[:order][:payment_method]
@@ -36,6 +33,10 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
+      unless @order.valid? == true
+        @delivery_addresses = DeliveryAddress.where(customer: current_customer)
+        render :new
+      end
     end
 
     @sum = 0
@@ -49,6 +50,8 @@ class Customer::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
+
+
     @cart_items = current_customer.cart_items.all
     # カートアイテムをorder_productsテーブルに保存
     @cart_items.each do |cart_item|
