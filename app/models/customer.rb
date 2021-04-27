@@ -29,10 +29,4 @@ class Customer < ApplicationRecord
                     "%#{content}%","%#{content}%","%#{content}%","%#{content}%","%#{content}%","%#{content}%"])
   end
   # sqlite 文字列結合 last_name || first_name
-  
-
-  def fullname
-    self.last_name + self.first_name
-  end
-
 end
