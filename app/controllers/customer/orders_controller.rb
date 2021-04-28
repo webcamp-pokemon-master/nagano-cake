@@ -4,7 +4,6 @@ class Customer::OrdersController < ApplicationController
     @orders = current_customer.orders
   end
 
-
   def new
     @order = Order.new
     @delivery_addresses = DeliveryAddress.where(customer: current_customer)
@@ -24,7 +23,7 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
 
     elsif params[:order][:selected_address] == "2"
-      address = DeliveryAddress.find(params[:order][:delivery_address_id])
+      address = DeliveryAddress.find(params[:order][:delivery_address_id])#:orderは84行目のorder
       @order.address     = address.address
       @order.postal_code = address.postal_code
       @order.name        = address.name
@@ -78,7 +77,7 @@ class Customer::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment)
+    params.require(:order).permit(:name, :address, :postal_code, :payment_method, :payment)#:orderはモデル名？？
   end
 
   def address_params

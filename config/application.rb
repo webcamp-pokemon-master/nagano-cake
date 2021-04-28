@@ -14,7 +14,7 @@ module NaganoCake
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.i18n.fallbacks = [:en] #translation missingフラッシュメッセージを日本語化
-    config.time_zone = 'Tokyo' #日本時間追加
+    config.time_zone = 'Tokyo' #日本時間追加、viewにstrftime("%Y-%m-%d %H:%M")
   end
 
 end

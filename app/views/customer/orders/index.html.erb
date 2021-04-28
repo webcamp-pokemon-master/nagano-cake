@@ -21,7 +21,7 @@
   			<tr>
 		      <td class="text-center">
   					<%#注文日%>
-	  				<%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
+	  				<%= order.created_at.strftime("%Y-%m-%d %H:%M") %><%#strftime~で東京の時間にしている,config/locales/application.rbのconfig.time_zone = 'Tokyo'もかく
   				</td>
 		      <td class="text-center">
   					<%#配送先%>
