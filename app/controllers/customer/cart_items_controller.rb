@@ -1,7 +1,7 @@
 class Customer::CartItemsController < ApplicationController
-  
+
   before_action :authenticate_customer!
-  
+
   def index
     @cart_items = current_customer.cart_items.all
     @sum = 0
@@ -10,6 +10,7 @@ class Customer::CartItemsController < ApplicationController
       @sum += @subtotal
     end
   end
+  #合計のメソッドをモデルで定義してもいい
 
   def create
     @cart_item = CartItem.new(cart_item_params)
