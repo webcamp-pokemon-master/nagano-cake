@@ -11,12 +11,14 @@ class Customer::DeliveryAddressesController < ApplicationController
     @delivery_address = DeliveryAddress.new(delivery_address_params)
 	  @delivery_address.customer_id = current_customer.id
     @delivery_addresses = current_customer.delivery_addresses
+    #ログインした人のデリバリーアドレスに紐づいたアドレス(一覧部分)
 	  if @delivery_address.save
 	    redirect_to delivery_addresses_path
 	  else  @delivery_addresses = current_customer.delivery_addresses
 	    render 'index'
 	  end
   end
+  
   def edit
     @delivery_address = DeliveryAddress.find(params[:id])
   end

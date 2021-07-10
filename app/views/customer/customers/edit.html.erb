@@ -3,7 +3,8 @@
     <h3 class="my-5 px-4 rounded-circle", style="background:#EEEEEE;">会員情報編集</h3>
 
   </div>
-  <%= render 'layouts/errors', obj: @customer %>
+  <%= render 'layouts/errors', obj: @customer %> 
+  <!----エラーメッセージ>-->
   <%= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
   <div class="row">
   <table class="table table-borderless col-md-10">

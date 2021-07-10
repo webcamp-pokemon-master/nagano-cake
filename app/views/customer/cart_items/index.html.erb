@@ -32,6 +32,7 @@
 							<%= form_for(cart_item, method: :patch, remote: true) do |f| %>
                 <div>
                   <%= f.number_field :amount, min:1,class: "col-4" %>
+                  <!----カウントする方法>-->
                   <%= f.submit "変更", class: "btn btn-sm btn-success rounded-pill offset-1 col-4" %>
                 </div>
                 <% end %>

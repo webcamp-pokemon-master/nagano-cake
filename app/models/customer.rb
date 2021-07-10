@@ -23,6 +23,8 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.user_status == true)
   end
+  #ユーザーステータスがログインじゃないと入れない
+  #false(退会)だったらログインできない
 
   def full_name
     self.last_name + self.first_name

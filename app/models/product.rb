@@ -12,7 +12,7 @@ class Product < ApplicationRecord
     value.tr!('０-９', '0-9') if value.is_a?(String)
     super(value)
   end
-
+#数字を全角で入れるとエラーになるのをOKにする
 
 
   def self.search_for(content)

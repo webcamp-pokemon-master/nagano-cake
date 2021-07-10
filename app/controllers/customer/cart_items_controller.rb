@@ -1,12 +1,13 @@
 class Customer::CartItemsController < ApplicationController
-  
+
   before_action :authenticate_customer!
-  
+
   def index
     @cart_items = current_customer.cart_items.all
-    @sum = 0
+    @sum = 0 #合計金額に必要
     @cart_items.each do |cart_item|
       @subtotal = (Product.find(cart_item.product_id).price * 1.1 * cart_item.amount).to_i
+      #小計
       @sum += @subtotal
     end
   end
